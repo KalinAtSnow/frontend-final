@@ -1,6 +1,6 @@
 FROM node:20 AS buildreact
 
-WORKDIR /frontend-final/
+WORKDIR /finalapp/
 COPY package.json ./
 COPY package-lock.json ./
 
@@ -11,4 +11,4 @@ COPY . .
 RUN npm run build 
 
 FROM nginx
-COPY --from=buildreact /final-frontend/dist /usr/share/nginx/html
+COPY --from=buildreact /finalapp/dist /usr/share/nginx/html
