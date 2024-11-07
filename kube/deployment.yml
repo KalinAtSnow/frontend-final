@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: finalapp
-        image: kalinatsnow/frontendfinal:${IMAGE_TAG}
+        image: kalinatsnow/finalapp:${IMAGE_TAG}
         ports:
         - containerPort: 80
         readinessProbe:
