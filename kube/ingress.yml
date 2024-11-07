@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: card-app-ingress
+  name: finalappingress
   namespace: kalin
 spec:
   rules:
