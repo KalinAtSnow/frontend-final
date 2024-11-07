@@ -10,5 +10,5 @@ COPY . .
 
 RUN npm run build 
 
-FROM nginx
-COPY --from=buildreact /finalapp/dist /usr/share/nginx/html
+# FROM nginx
+# COPY --from=buildreact /finalapp/dist /usr/share/nginx/html
