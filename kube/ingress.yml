@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: finalappingress
-  namespace: kalin
+  namespace: kalin-final
 spec:
   rules:
   - host: kalinfinalapp.duckdns.org

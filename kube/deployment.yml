@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: finalapp
-  namespace: kalin
+  namespace: kalin-final
 spec:
   replicas: 1
   selector:
