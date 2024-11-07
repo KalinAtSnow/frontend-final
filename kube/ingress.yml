@@ -5,7 +5,7 @@ metadata:
   namespace: kalin-final
 spec:
   rules:
-  - host: kalinfinalapp.duckdns.org
+  - host: kfinalapp.duckdns.org
     http:
       paths:
       - path: /
