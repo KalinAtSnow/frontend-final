@@ -28,11 +28,11 @@ jobs:
       - name: build and image
         run: |
           docker build \
-          -t kalinatsnow/inventorymanagement:${{github.run_number}} \
-          -t kalinatsnow/inventorymanagement:latest \
+          -t kalinatsnow/finalapp:${{github.run_number}} \
+          -t kalinatsnow/finalapp:latest \
           .
 
-          docker push kalinatsnow/inventorymanagement --all-tags
+          docker push kalinatsnow/finalapp --all-tags
 
       - name: kube deploy
         run : |
