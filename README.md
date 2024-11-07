@@ -64,10 +64,10 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 
 | Week   | Tasks Completed                           |
 |--------|-------------------------------------------|
-| Nov 6  | [ ] CI/CD pipeline                        |
+| Nov 6  | [O] CI/CD pipeline                        |
 |        | [ ] User authentication                   |
-|        | [ ] Figma/Sketch mockups                  |
-|        | [ ] Tailwind schema                       |
+|        | [x] Figma/Sketch mockups                  |
+|        | [O] Tailwind schema                       |
 | Nov 9  | [ ] Home page implemented                 |
 |        | [ ] Local DB with seed data               |
 |        | [ ] View cards (no filters)               |
@@ -90,3 +90,8 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 |        | [ ] Prep to buy cards                     |
 | Dec 7  | [ ] Cleanup/refactor/whatever else        |
 
+## Nov 6
+
+I got both my api and my frontend up on kubernetes - they don't talk to each other yet there or locally yet. It took me longer than I thought to get them to this point. I have three pages designed in figma as a wireframe. I didn't hvae time to look into colors but with it being a pokemon adjacent app foremost, I will likely make it blue (near the color of the card back) to start out with. So I don't have an official tailwind schema yet, but I've at least thougth about it.
+
+I haven't had much time to work on it, but I forsee that I will have more time for the next checkpoint to catch back up. I think I did front load myself a little but it should be manageable. 
