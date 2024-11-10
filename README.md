@@ -70,7 +70,7 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 |        | [x] Tailwind schema                       |
 | Nov 9  | [x] Home page implemented                 |
 |        | [x] AWS DB with seed data                 |
-|        | [O] View cards (no filters)               |
+|        | [x] View cards (no filters)               |
 | Nov 13 | [ ] View cards (with filters)             |
 |        | [O] Start error handling                  |
 |        | [ ] View card details                     |
