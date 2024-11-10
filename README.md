@@ -64,15 +64,15 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 
 | Week   | Tasks Completed                           |
 |--------|-------------------------------------------|
-| Nov 6  | [O] CI/CD pipeline                        |
-|        | [ ] User authentication                   |
+| Nov 6  | [x] CI/CD pipeline                        |
+|        | [x] User authentication                   |
 |        | [x] Figma/Sketch mockups                  |
-|        | [O] Tailwind schema                       |
-| Nov 9  | [ ] Home page implemented                 |
-|        | [ ] Local DB with seed data               |
-|        | [ ] View cards (no filters)               |
+|        | [x] Tailwind schema                       |
+| Nov 9  | [x] Home page implemented                 |
+|        | [x] AWS DB with seed data                 |
+|        | [O] View cards (no filters)               |
 | Nov 13 | [ ] View cards (with filters)             |
-|        | [ ] Start error handling                  |
+|        | [O] Start error handling                  |
 |        | [ ] View card details                     |
 |        | [ ] Testing pipeline                      |
 |        | [ ] Local state storage                   |
@@ -95,3 +95,6 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 I got both my api and my frontend up on kubernetes - they don't talk to each other yet there or locally yet. It took me longer than I thought to get them to this point. I have three pages designed in figma as a wireframe. I didn't hvae time to look into colors but with it being a pokemon adjacent app foremost, I will likely make it blue (near the color of the card back) to start out with. So I don't have an official tailwind schema yet, but I've at least thougth about it.
 
 I haven't had much time to work on it, but I forsee that I will have more time for the next checkpoint to catch back up. I think I did front load myself a little but it should be manageable. 
+
+## Nov 9
+I got everything up to some degree, I still need to seed the database with a little bit more usable data (images mainly, but i'm working on that) I have the start of being able to show cards, I need to figure out how I want to filter/display them fully for next time as well. I feel like I'm almost starting down the route of 90% of the way done with everything because I'm not exactly sure how everything will look just yet (and how reliant everything is on images which is the hardest part right now). Though, I did lay out some groundwork for future days and it might end up changing what I had planned with it. Automate things rather than manually make them like I had planned.

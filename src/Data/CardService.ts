@@ -17,6 +17,16 @@ async function GetCard(): Promise<Card[]> {
   }
 }
 
+async function GetCardRange(start:number, end:number): Promise<Card[]> {
+  try {
+    const response = await axios.get<Card[]>(`${API_URL}/api/Card/get/${start}/${end}`);
+    return response.data;
+  } catch (error: any) {
+    toast.error("could not fetch cards" + error.message);
+    throw error;
+  }
+}
+
 async function PutCard(upload: Card): Promise<void> {
   try {
     await axios.put(`${API_URL}/${upload.id}`, upload);
@@ -60,4 +70,5 @@ export const apiService = {
   Delete: deleteCard,
   Put: PutCard,
   Get: GetCard,
+  GetRange: GetCardRange
 };

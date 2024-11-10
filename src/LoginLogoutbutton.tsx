@@ -20,9 +20,9 @@ function LoginLogout() {
 
   if (auth.isAuthenticated) {
     return (
-      <div>
+      <div className="text-primary-200 ml-auto p-4">
         Hello {auth.user?.profile.sub}{" "}
-        <button
+        <button className="text-primary-200 ml-auto p-4"
           onClick={() => {
             void auth.removeUser();
           }}
@@ -33,7 +33,7 @@ function LoginLogout() {
     );
   }
 
-  return <button className="" onClick={() => void auth.signinRedirect()}>Log in</button>;
+  return <button className="text-primary-200 ml-auto p-4" onClick={() => void auth.signinRedirect()}>Log in</button>;
 }
 
 export default LoginLogout;
