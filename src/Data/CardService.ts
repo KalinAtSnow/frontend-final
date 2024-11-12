@@ -7,9 +7,19 @@ export const API_URL = import.meta.env.VITE_API_URL;
 
 console.log("api url" , API_URL);
 
-async function GetCard(): Promise<Card[]> {
+async function GetCards(): Promise<Card[]> {
   try {
     const response = await axios.get<Card[]>(`${API_URL}/api/Card/getall`);
+    return response.data;
+  } catch (error: any) {
+    toast.error("could not fetch cards" + error.message);
+    throw error;
+  }
+}
+
+async function GetCard(id:number): Promise<Card> {
+  try {
+    const response = await axios.get<Card>(`${API_URL}/api/Card/get/${id}`);
     return response.data;
   } catch (error: any) {
     toast.error("could not fetch cards" + error.message);
@@ -69,6 +79,7 @@ export const apiService = {
 //   Post: PostCard,
   Delete: deleteCard,
   Put: PutCard,
-  Get: GetCard,
-  GetRange: GetCardRange
+  Get: GetCards,
+  GetRange: GetCardRange,
+  GetCard: GetCard
 };

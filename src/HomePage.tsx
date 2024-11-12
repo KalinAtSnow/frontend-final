@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { apiService } from "./Data/CardService";
 import { Card } from "./Data/Interfaces";
+import { useNavigate } from "react-router-dom";
 
 export function HomePage() {
   const [cardData, setCardData] = useState<Card[]>();
+  const navigator = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,6 +19,10 @@ export function HomePage() {
 
     fetchData();
   }, []);
+
+  const cardClicked = (id: number) => {
+    navigator(`Details/${id}`);
+  };
   return (
     <div className="bg-primary-100">
       <div className="m-16">
@@ -33,7 +39,7 @@ export function HomePage() {
           Imperdiet dapibus magna tellus neque purus curae dolor. Lobortis erat
           fermentum vitae pellentesque feugiat eros. Netus tincidunt nisi
           ullamcorper amet tempus amet. Feugiat rutrum fermentum; consequat
-          varius penatibus varius gravida commodo. 
+          varius penatibus varius gravida commodo.
         </p>
       </div>
       <div className="bg-primary-400 min-h-96 grid grid-cols-2">
@@ -45,9 +51,13 @@ export function HomePage() {
         </div>
 
         <div className="p-8 flex flex-wrap">
-          <div className="bg-primary-200 p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
+          <div className="bg-primary-200 p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {cardData?.map((card) => (
-              <div className="hover:scale-110 hover:shadow-lg" key={card.id}>
+              <div
+                className="hover:scale-110 hover:shadow-lg"
+                key={card.id}
+                onClick={() => cardClicked(card.id)}
+              >
                 <img className="h-40" src={card.imageurl} />
               </div>
             ))}

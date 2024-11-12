@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router";
 import { HomePage } from "./HomePage";
 import { ViewAllCards } from "./ViewAllCards";
 import NavBar from "./Navbar";
+import { Details } from "./Details";
 
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
@@ -28,7 +29,8 @@ function App() {
         <NavBar />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/cards" element={<ViewAllCards />} />
+            <Route path="/cards" element={<ViewAllCards /> } />
+            <Route path="/Details/:id" element={<Details /> } />
           </Routes>
       </QueryClientProvider>
     </>
