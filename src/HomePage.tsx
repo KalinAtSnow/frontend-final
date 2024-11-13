@@ -52,15 +52,19 @@ export function HomePage() {
 
         <div className="p-8 flex flex-wrap">
           <div className="bg-primary-200 p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {cardData?.map((card) => (
+            {cardData ?
+            cardData?.map((card) => (
               <div
-                className="hover:scale-110 hover:shadow-lg"
-                key={card.id}
-                onClick={() => cardClicked(card.id)}
+              className="hover:scale-110 hover:shadow-lg"
+              key={card.id}
+              onClick={() => cardClicked(card.id)}
               >
-                <img className="h-40" src={card.imageurl} />
+              <img className="h-40" src={card.imageurl} />
               </div>
-            ))}
+            ))
+            :
+            <div className="animate-spin"/>
+          }
           </div>
         </div>
       </div>
