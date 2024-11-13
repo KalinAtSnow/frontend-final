@@ -2,23 +2,22 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: self-hosted
 
     strategy:
       matrix:
         node-version: [20.x]
-       
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: log into docker
         uses: docker/Login-action@v2
         with:
@@ -35,7 +34,9 @@ jobs:
           docker push kalinatsnow/finalapp --all-tags
 
       - name: kube deploy
-        run : |
+        run: |
+          echo $HOME
+          echo ~/.nix-profile/bin
           export PATH=$PATH:~/.nix-profile/bin:/nix/var/nix/profiles/default/bin
 
           export IMAGE_TAG=${{ github.run_number }}
