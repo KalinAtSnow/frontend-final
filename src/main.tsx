@@ -4,14 +4,15 @@ import "./App.css";
 import App from "./App.tsx";
 import { ErrorBoundary } from "react-error-boundary";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider } from "react-oidc-context";
+import { AuthProvider
+  , AuthProviderProps } from "react-oidc-context";
 
 const logError = (error: Error, info: ErrorInfo) => {
   console.log(error, info.componentStack);
   <div>{error.message}</div>;
 };
 
-const oidcConfig = {
+const oidcConfig : AuthProviderProps = {
   authority: "https://auth.snowse-ts.duckdns.org/realms/advanced-frontend-ts",
   client_id: "kalin-final",
   redirect_uri: "http://localhost:5173/",

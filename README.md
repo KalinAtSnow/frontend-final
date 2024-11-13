@@ -23,7 +23,7 @@ The project will be able to do the following:
 Looking at some of the firefox browser apis, I might be able to work with the clipboard api to add lists to the clipboard. It might also be fun to do something with the vibration api for mobile devices. I will also likely need to find someone's api to get some data that I can fetch on occasion
 
 ## 10+ pages/views via a router
-    [ ] Home
+    [x] Home
     [ ] View Cards with filters
     [ ] View Inventory
     [ ] View Popular Decks
@@ -31,7 +31,7 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
     [ ] View Personal Decks
     [ ] Prep to Buy Cards (chose which rarity of card)
     [ ] Edit Decks
-    [ ] View Card Details
+    [x] View Card Details
     [ ] View Set
     [ ] Input Cards (admin)
     [ ] Input Cards (user)

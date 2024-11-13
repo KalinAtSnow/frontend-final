@@ -23,7 +23,7 @@ export const Details = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return (
     <>
