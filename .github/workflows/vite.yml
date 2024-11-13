@@ -36,7 +36,7 @@ jobs:
       - name: kube deploy
         run: |
           echo $HOME
-          echo /home/kalin/.nix-profile/bin
+          echo ~/.nix-profile/bin
           export PATH=$PATH:~/.nix-profile/bin:/nix/var/nix/profiles/default/bin
 
           export IMAGE_TAG=${{ github.run_number }}
