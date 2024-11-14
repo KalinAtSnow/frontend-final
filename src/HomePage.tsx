@@ -54,7 +54,7 @@ export function HomePage() {
           <div className="bg-primary-200 p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {cardData ?
             cardData?.map((card) => (
-              <div
+              <div 
               className="hover:scale-110 hover:shadow-lg"
               key={card.id}
               onClick={() => cardClicked(card.id)}
