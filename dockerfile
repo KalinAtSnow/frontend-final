@@ -6,7 +6,7 @@ COPY package-lock.json ./
 
 RUN npm install 
 
-ENV VITE_API_URL=http://api.kfinal.duckdns.org
+ENV VITE_API_URL=http://kfinal.duckdns.org
 COPY . .
 
 RUN npm run build 
