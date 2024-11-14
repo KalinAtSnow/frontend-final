@@ -30,6 +30,9 @@ jobs:
       - name: test
         run: npm run test
 
+      - name: lint
+        run: npm run lint
+
       - name: build and image
         run: |
           docker build \
