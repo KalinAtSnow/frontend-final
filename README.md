@@ -23,6 +23,7 @@ The project will be able to do the following:
 Looking at some of the firefox browser apis, I might be able to work with the clipboard api to add lists to the clipboard. It might also be fun to do something with the vibration api for mobile devices. I will also likely need to find someone's api to get some data that I can fetch on occasion
 
 ## 10+ pages/views via a router
+
     [x] Home
     [ ] View Cards with filters
     [ ] View Inventory
@@ -38,68 +39,69 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 
 ## Rubric breakdown by week
 
-
-| Rubric Points                                                                       | Nov 6 | Nov 9 | Nov 13 | Nov 16 | Nov 20 | Nov 23 | Nov 26 | Dec 4 | Dec 7 - Final |
-|-------------------------------------------------------------------------------------|-------|-------|--------|--------|--------|--------|--------|-------|----------------|
-| **Project scope is 2-3 times larger than Inventory Management**  30 pts             |  0    |   3   |    9   |   12   |   15   |   21   |   24   |  27   |      30        |
-| **Technology: use local storage**          5 pts                                    |  0    |   5   |    5   |    5   |    5   |    5   |    5   |   5   |       5        |
-| **Technology: Client side state stores (e.g. tanstack query or context)**   5 pts   |  0    |   2   |    2   |    3   |    3   |    4   |    4   |   5   |       5        |
-| **Technology: Toasts / global notifications or alerts**  5 pts                      |  0    |   0   |    5   |    5   |    5   |    5   |    5   |   5   |       5        |
-| **Technology: Error handling (both on api requests and render errors)**  5 pts      |  0    |   0   |    2   |    4   |    5   |    5   |    5   |   5   |       5        |
-| **Technology: Network Calls that read and write data**   5 pts                      |  0    |   5   |    5   |    5   |    5   |    5   |    5   |   5   |       5        |
-| **Technology: Developer type helping (typescript)**     5 pts                       |  5    |   5   |    5   |    5   |    5   |    5   |    5   |   5   |       5        |
-| **Technology: 10+ pages or views**                       5 pts                      |  0    |  .5   |  1.5   |    3   |  3.5   |    4   |  4.5   |   5   |       5        |
-| **Technology: CI/CD pipeline**                           5 pts                      |  5    |   5   |    5   |    5   |    5   |    5   |    5   |   5   |       5        |
-| **Technology: tests run in pipeline, pipeline aborts if they fail**   5 pts         |  0    |   0   |    5   |    5   |    5   |    5   |    5   |   5   |       5        |
-| **Technology: linting in pipeline**                      5 pts                      |  0    |   0   |    0   |    5   |    5   |    5   |    5   |   5   |       5        |
-| **Technology: 3+ generic form input components**         9 pts                      |  0    |   0   |    3   |    3   |    6   |    6   |    9   |   9   |       9        |
-| **Technology: 4+ generic layout components**             12 pts                     |  0    |   0   |    4   |    8   |    8   |    8   |   12   |  12   |      12        |
-| **Technology: authentication and user account support**  10 pts                     | 10    |  10   |   10   |   10   |   10   |   10   |   10   |  10   |      10        |
-| **Technology: authorized pages and public pages**        5 pts                      |  0    |   0   |  2.5   |  2.5   |    3   |    3   |    5   |   5   |       5        |
-| **Experience: all experiences mobile friendly**          5 pts                      |  0    |   1   |    2   |  2.5   |    3   |  3.5   |    4   | 4.5   |       5        |
-| **Experience: 3 instances where elements re-order themselves**  5 pts               |  0    |   0   |    0   |  1.6   |  1.6   |  3.2   |  3.2   |   5   |       5        |
-| **Professional, organized and smooth experience**  20 pts                           |  0    |   2   |    2   |    6   |   10   |   12   |   14   |  16   |      20        |
+| Rubric Points                                                                   | Nov 6 | Nov 9 | Nov 13 | Nov 16 | Nov 20 | Nov 23 | Nov 26 | Dec 4 | Dec 7 - Final |
+| ------------------------------------------------------------------------------- | ----- | ----- | ------ | ------ | ------ | ------ | ------ | ----- | ------------- |
+| **Project scope is 2-3 times larger than Inventory Management** 30 pts          | 0     | 3     | 9      | 12     | 15     | 21     | 24     | 27    | 30            |
+| **Technology: use local storage** 5 pts                                         | 0     | 5     | 5      | 5      | 5      | 5      | 5      | 5     | 5             |
+| **Technology: Client side state stores (e.g. tanstack query or context)** 5 pts | 0     | 2     | 2      | 3      | 3      | 4      | 4      | 5     | 5             |
+| **Technology: Toasts / global notifications or alerts** 5 pts                   | 0     | 0     | 5      | 5      | 5      | 5      | 5      | 5     | 5             |
+| **Technology: Error handling (both on api requests and render errors)** 5 pts   | 0     | 0     | 2      | 4      | 5      | 5      | 5      | 5     | 5             |
+| **Technology: Network Calls that read and write data** 5 pts                    | 0     | 5     | 5      | 5      | 5      | 5      | 5      | 5     | 5             |
+| **Technology: Developer type helping (typescript)** 5 pts                       | 5     | 5     | 5      | 5      | 5      | 5      | 5      | 5     | 5             |
+| **Technology: 10+ pages or views** 5 pts                                        | 0     | .5    | 1.5    | 3      | 3.5    | 4      | 4.5    | 5     | 5             |
+| **Technology: CI/CD pipeline** 5 pts                                            | 5     | 5     | 5      | 5      | 5      | 5      | 5      | 5     | 5             |
+| **Technology: tests run in pipeline, pipeline aborts if they fail** 5 pts       | 0     | 0     | 5      | 5      | 5      | 5      | 5      | 5     | 5             |
+| **Technology: linting in pipeline** 5 pts                                       | 0     | 0     | 0      | 5      | 5      | 5      | 5      | 5     | 5             |
+| **Technology: 3+ generic form input components** 9 pts                          | 0     | 0     | 3      | 3      | 6      | 6      | 9      | 9     | 9             |
+| **Technology: 4+ generic layout components** 12 pts                             | 0     | 0     | 4      | 8      | 8      | 8      | 12     | 12    | 12            |
+| **Technology: authentication and user account support** 10 pts                  | 10    | 10    | 10     | 10     | 10     | 10     | 10     | 10    | 10            |
+| **Technology: authorized pages and public pages** 5 pts                         | 0     | 0     | 2.5    | 2.5    | 3      | 3      | 5      | 5     | 5             |
+| **Experience: all experiences mobile friendly** 5 pts                           | 0     | 1     | 2      | 2.5    | 3      | 3.5    | 4      | 4.5   | 5             |
+| **Experience: 3 instances where elements re-order themselves** 5 pts            | 0     | 0     | 0      | 1.6    | 1.6    | 3.2    | 3.2    | 5     | 5             |
+| **Professional, organized and smooth experience** 20 pts                        | 0     | 2     | 2      | 6      | 10     | 12     | 14     | 16    | 20            |
 
 ## Tasks completed by week
 
-| Week   | Tasks Completed                           |
-|--------|-------------------------------------------|
-| Nov 6  | [x] CI/CD pipeline                        |
-|        | [x] User authentication                   |
-|        | [x] Figma/Sketch mockups                  |
-|        | [x] Tailwind schema                       |
-| Nov 9  | [x] Home page implemented                 |
-|        | [x] AWS DB with seed data                 |
-|        | [x] View cards (no filters)               |
-| Nov 13 | [ ] View cards (with filters)             |
-|        | [O] Start error handling                  |
-|        | [O] View card details                     |
-|        | [O] Local state storage                   |
-| Nov 16 | [x] Toasts                                |
-|        | [ ] Testing pipeline                      |
-|        | [ ] Linting in pipeline                   |
-|        | [O] Add cards to inventory GUI            |
-|        | [ ] View inventory                        |
-| Nov 20 | [ ] Create decks                          |
-|        | [ ] View decks based on set               |
-|        | [ ] View popular decks                    |
-| Nov 23 | [ ] Export decklist                       |
-|        | [ ] View/edit decks                       |
-| Nov 26 | [ ] Import decklist                       |
-| Dec 4  | [ ] Admin add cards                       |
-|        | [ ] Prep to buy cards                     |
-| Dec 7  | [ ] Cleanup/refactor/whatever else        |
+| Week   | Tasks Completed                    |
+| ------ | ---------------------------------- |
+| Nov 6  | [x] CI/CD pipeline                 |
+|        | [x] User authentication            |
+|        | [x] Figma/Sketch mockups           |
+|        | [x] Tailwind schema                |
+| Nov 9  | [x] Home page implemented          |
+|        | [x] AWS DB with seed data          |
+|        | [x] View cards (no filters)        |
+| Nov 13 | [ ] View cards (with filters)      |
+|        | [O] Start error handling           |
+|        | [O] View card details              |
+|        | [x] Testing pipeline               |
+|        | [O] Local state storage            |
+| Nov 16 | [x] Toasts                         |
+|        | [x] Linting in pipeline            |
+|        | [O] Add cards to inventory GUI     |
+|        | [ ] View inventory                 |
+| Nov 20 | [ ] Create decks                   |
+|        | [ ] View decks based on set        |
+|        | [ ] View popular decks             |
+| Nov 23 | [ ] Export decklist                |
+|        | [ ] View/edit decks                |
+| Nov 26 | [ ] Import decklist                |
+| Dec 4  | [ ] Admin add cards                |
+|        | [ ] Prep to buy cards              |
+| Dec 7  | [ ] Cleanup/refactor/whatever else |
 
 ## Nov 6
 
 I got both my api and my frontend up on kubernetes - they don't talk to each other yet there or locally yet. It took me longer than I thought to get them to this point. I have three pages designed in figma as a wireframe. I didn't hvae time to look into colors but with it being a pokemon adjacent app foremost, I will likely make it blue (near the color of the card back) to start out with. So I don't have an official tailwind schema yet, but I've at least thougth about it.
 
-I haven't had much time to work on it, but I forsee that I will have more time for the next checkpoint to catch back up. I think I did front load myself a little but it should be manageable. 
+I haven't had much time to work on it, but I forsee that I will have more time for the next checkpoint to catch back up. I think I did front load myself a little but it should be manageable.
 
 ## Nov 9
+
 I got everything up to some degree, I still need to seed the database with a little bit more usable data (images mainly, but i'm working on that) I have the start of being able to show cards, I need to figure out how I want to filter/display them fully for next time as well. I feel like I'm almost starting down the route of 90% of the way done with everything because I'm not exactly sure how everything will look just yet (and how reliant everything is on images which is the hardest part right now). Though, I did lay out some groundwork for future days and it might end up changing what I had planned with it. Automate things rather than manually make them like I had planned.
 
 ## Nov 14
-I'm going to be adding a little more after completing this, but I wanted to get this done and turned in before I forget.. getting secrets/api to communicate with the frontend set up properly with my db took a lot longer than it likely should have (partially due to me not realizing that I was trying to access the wrong site for almost 2 hours). Because of this I wasn't able to get some things in like I wanted to. I put in some local state storage to hold my cards that I can get, but I don't think that I am using/implementing it correctly, its still something that I have almost no idea on how to do properly. I have implemented Toasts but there's almost no place that they can be used as of right now - they do show up when you can't pull anything from the db as I saw very frequently testing it out. 
+
+I'm going to be adding a little more after completing this, but I wanted to get this done and turned in before I forget.. getting secrets/api to communicate with the frontend set up properly with my db took a lot longer than it likely should have (partially due to me not realizing that I was trying to access the wrong site for almost 2 hours). Because of this I wasn't able to get some things in like I wanted to. I put in some local state storage to hold my cards that I can get, but I don't think that I am using/implementing it correctly, its still something that I have almost no idea on how to do properly. I have implemented Toasts but there's almost no place that they can be used as of right now - they do show up when you can't pull anything from the db as I saw very frequently testing it out.
 
 I do have some error handling (once again, very familiar with the page). Its not ideal at the moment because it locks you out from seeing everything else but I will be working on that as I go. Network calls now officially work again on k8s with my CI fully working after figuring out my secrets bug (the spaces in are very important {{ secrets.key }}). I haven't had time to put tests in like I had planned for this week, let alone in the pipeline so that will have to be bumped to next week. I don't have any reuable (input) components, but I prob could for the colored bars as I am using those on multiple pages. Authentication works locally, on k8s I redirect back to localhost even though I have a redirect back to k8s so I'm not sure what's up there. No auth locked pages yet - that will come next time when I start implementing an inventory page.
