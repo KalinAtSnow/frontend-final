@@ -1,18 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: finalapp
-  ingress
+  name: finalappingress
   namespace: kalin-final
 spec:
   rules:
-  - host: kfinalapp.duckdns.org
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: finalappsvc
-            port:
-              number: 80
+    - host: kfinalapp.duckdns.org
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: finalappsvc
+                port:
+                  number: 80
