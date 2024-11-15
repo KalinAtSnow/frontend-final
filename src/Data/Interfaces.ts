@@ -8,3 +8,17 @@ export interface Card {
   imageurl: string;
   cardname: string;
 }
+
+export interface Sets {
+  id: number;
+  setname: string;
+  ticker: string;
+  seriesId: number;
+  legalmark: string;
+  releaseDate: string;
+  imageurl: string;
+  printedTotal: number;
+  specialsCount: number;
+}
+
+

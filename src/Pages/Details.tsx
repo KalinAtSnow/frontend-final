@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { apiService } from "./Data/CardService";
-import { Card } from "./Data/Interfaces";
+import { Card } from "../Data/Interfaces";
 import { useParams } from "react-router";
+import { cardApiService } from "../Data/CardService";
 
 export const Details = () => {
   const { id } = useParams();
@@ -14,7 +14,7 @@ export const Details = () => {
           if (isNaN(+id)) {
             throw new Error("ID is not a number");
           }
-          const data = await apiService.GetCard(+id);
+          const data = await cardApiService.GetCard(+id);
           setCardData(data);
         }
       } catch (error) {
@@ -35,12 +35,14 @@ export const Details = () => {
           <div>
             <p className="text-40px ml-4">{cardData?.cardname}</p>
             <div>
-                <label className="p-2"> Add Count to Library 
-              <input
-                type="number"
-                className=" m-2 border max-w-10 border-primary-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
+              <label className="p-2">
+                {" "}
+                Add Count to Library
+                <input
+                  type="number"
+                  className=" m-2 border max-w-10 border-primary-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
                 />
-                </label>
+              </label>
             </div>
           </div>
         </div>

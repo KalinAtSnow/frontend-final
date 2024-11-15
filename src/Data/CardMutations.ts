@@ -1,5 +1,5 @@
 // cardMutations.ts
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { Card } from "./Interfaces";
 import { cardApiService } from "./CardService";
@@ -22,33 +22,23 @@ export const useUpdateCardMutation = () => {
   });
 };
 
-export const useDeleteCardMutation = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation<void, Error, Card>({
-    mutationFn: cardApiService.Delete,
-    onSuccess: () => {
-      toast.success("Card deleted successfully");
-      queryClient.invalidateQueries({
-        refetchType: "all",
-        queryKey: ["cards"],
-      });
-    },
-    onError: (error) => {
-      toast.error("Something went wrong: " + error.message);
-    },
-  });
+export const useAllCardsQuery = () => {
+  return useQuery({
+    queryKey: ["cards"],
+    queryFn: cardApiService.Get,
+  })
 };
 
-// export const useAddCardMutation = () => {
-//   const queryClient = useQueryClient();
-//   return useMutation({
-//     mutationFn: apiService.Post,
-//     onSuccess: () => {
-//       queryClient.invalidateQueries({
-//         refetchType: "all",
-//         queryKey: ["cards"],
-//       });
-//     },
-//   });
-// };
+export const useCardByIdQuery = (id: number) => {
+  return useQuery({
+    queryKey: ["cards", id],
+    queryFn: () => cardApiService.GetCard(id),
+  })
+};
+
+export const useCardRangeQuery = (start: number, end: number) => {
+  return useQuery({
+    queryKey: ["cards", start, end],
+    queryFn: () => cardApiService.GetRange(start, end),
+  })
+}; 
