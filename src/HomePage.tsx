@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { apiService } from "./Data/CardService";
+import { cardApiService } from "./Data/CardService";
 import { Card } from "./Data/Interfaces";
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,7 @@ export function HomePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await apiService.GetRange(7, 27);
+        const data = await cardApiService.GetRange(7, 27);
         setCardData(data);
       } catch (error) {
         console.error("Error fetching card data:", error);
@@ -66,6 +66,32 @@ export function HomePage() {
             <div className="animate-spin"/>
           }
           </div>
+        </div>
+      </div>
+
+      <div className="bg-primary-200 min-h-96 grid grid-cols-2">
+        <div className="p-8 flex flex-wrap">
+          <div className="bg-primary-200 p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {cardData ?
+            cardData?.map((card) => (
+              <div 
+              className="hover:scale-110 hover:shadow-lg"
+              key={card.id}
+              onClick={() => cardClicked(card.id)}
+              >
+              <img className="h-40" src={card.imageurl} />
+              </div>
+            ))
+            :
+            <div className="animate-spin"/>
+          }
+          </div>
+        </div>
+        <div className="m-16 flex-col">
+          <p className="text-primary-800 text-36px text-center">Sets</p>
+          <p className="text-primary-400 text-center p-4">
+            The Newest Sets
+          </p>
         </div>
       </div>
     </div>

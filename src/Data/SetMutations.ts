@@ -2,13 +2,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { Card } from "./Interfaces";
-import { cardApiService } from "./CardService";
+import { setApiService } from "./SetService";
 
 export const useUpdateCardMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation<void, Error, Card>({
-    mutationFn: cardApiService.Put,
+    mutationFn: setApiService.Put,
     onSuccess: () => {
       toast.success("Card updated successfully");
       queryClient.invalidateQueries({
@@ -26,7 +26,7 @@ export const useDeleteCardMutation = () => {
   const queryClient = useQueryClient();
 
   return useMutation<void, Error, Card>({
-    mutationFn: cardApiService.Delete,
+    mutationFn: setApiService.Delete,
     onSuccess: () => {
       toast.success("Card deleted successfully");
       queryClient.invalidateQueries({

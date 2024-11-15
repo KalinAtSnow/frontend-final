@@ -75,7 +75,7 @@ const deleteCard = async (card: Card): Promise<void> => {
 //   await axios.post(`${API_URL}/`, formData);
 // };
 
-export const cardApiService = {
+export const setApiService = {
 //   Post: PostCard,
   Delete: deleteCard,
   Put: PutCard,
