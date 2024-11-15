@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: finalappcampussvc
+  namespace: kalin-final-campus
+spec:
+  selector:
+    app: finalappcampus
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
