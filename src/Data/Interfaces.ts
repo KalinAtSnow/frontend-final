@@ -21,4 +21,21 @@ export interface Sets {
   specialsCount: number;
 }
 
+export interface Card_Inventory {
+  id: number;
+  pokemonid: number;
+  pokemontypeid: number;
+  setid: number;
+  tcgplayerurl: string;
+  cardnumber: string;
+  imageurl: string;
+  cardname: string;
+  inventories: InventoryItem[];
+}
 
+export interface InventoryItem {
+cardid : number;
+id : number;
+quantity : number;
+userid: number;
+}

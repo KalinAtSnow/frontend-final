@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Card } from "./Interfaces";
+import { Card, Card_Inventory } from "./Interfaces";
 
 export const API_URL = import.meta.env.VITE_API_URL;
 
@@ -37,6 +37,16 @@ async function GetCardRange(start:number, end:number): Promise<Card[]> {
   }
 }
 
+async function GetCardsInInventory(id:number): Promise<Card_Inventory[]> {
+  try {
+    const response = await axios.get<Card_Inventory[]>(`${API_URL}/api/Card/get/inventory/${id}`);
+    return response.data;
+  } catch (error: any) {
+    toast.error("could not fetch cards" + error.message);
+    throw error;
+  }
+}
+
 async function PutCard(upload: Card): Promise<void> {
   try {
     await axios.put(`${API_URL}/${upload.id}`, upload);
@@ -50,5 +60,6 @@ export const cardApiService = {
   Put: PutCard,
   Get: GetCards,
   GetRange: GetCardRange,
-  GetCard: GetCard
+  GetCard: GetCard,
+  GetInventory: GetCardsInInventory
 };

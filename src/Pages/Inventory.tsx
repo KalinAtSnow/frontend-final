@@ -1,22 +1,9 @@
-import { useEffect, useState } from "react";
-import { cardApiService } from "../Data/CardService";
-import { Card } from "../Data/Interfaces";
+import { useInventoryCardsQuery } from "../Data/CardMutations";
 
-export function ViewAllCards() {
-  const [cardData, setCardData] = useState<Card[]>();
+export function Inventory() {
+  const { data: cardData } = useInventoryCardsQuery(1);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await cardApiService.GetRange(7, 25);
-        setCardData(data);
-      } catch (error) {
-        console.error("Error fetching card data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  console.log(cardData);
 
   if (cardData == undefined) {
     return <p>Loading...</p>;
@@ -24,17 +11,18 @@ export function ViewAllCards() {
 
   return (
     <>
-      <div className="p-8 bg-primary-100 flex flex-wrap">
+      <div className="p-8 bg-primary-50 flex flex-wrap">
         <div className="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto lg:grid-cols-6 gap-4">
           {cardData?.map((card) => (
-            <div
-              className=""
-              key={card.id}
-            >
+            <div className="relative" key={card.id}>
               <img
-                className="hover:scale-105 hover:shadow-lg"
+                className="hover:scale-105 hover:shadow-lg w-full"
                 src={card.imageurl}
+                alt={card.cardname}
               />
+              <div className="absolute bottom-2 right-2 bg-gray-800 bg-opacity-50 text-white px-2 py-1 rounded">
+                {card.inventories[0]?.quantity}
+              </div>
             </div>
           ))}
         </div>

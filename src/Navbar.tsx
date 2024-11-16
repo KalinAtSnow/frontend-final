@@ -12,6 +12,9 @@ function NavBar() {
           <Link className="m-6 text-primary-100" to="/cards" aria-label="view cards">
             <p>View Cards</p>
           </Link>
+          <Link className="m-6 text-primary-100" to="/inventory" aria-label="view cards">
+            <p>View Inventory</p>
+          </Link>
           <LoginLogout />
         </div>
       </div>
