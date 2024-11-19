@@ -6,20 +6,25 @@ import { useSetRangeQuery } from "../Data/SetMutations";
 export function HomePage() {
   const navigator = useNavigate();
 
-  const [columns, setColumns] = useState(5);
+  const [cardsShown, setCardsShown] = useState(0);
+  const [setsShown, setSetsShown] = useState(6);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1280) {
-        setColumns(5);
+        setCardsShown(15);
       } else if (window.innerWidth >= 1024) {
-        setColumns(4);
+        setCardsShown(12);
+        setSetsShown(6);
       } else if (window.innerWidth >= 768) {
-        setColumns(3);
+        setCardsShown(9);
+        setSetsShown(4);
       } else if (window.innerWidth >= 640) {
-        setColumns(2);
+        setCardsShown(10);
+        setSetsShown(6);
       } else {
-        setColumns(1);
+        setCardsShown(4);
+        setSetsShown(4);
       }
     };
     handleResize();
@@ -28,7 +33,7 @@ export function HomePage() {
   }, []);
 
   const { data: cardData } = useCardRangeQuery(7, 27);
-  const { data: setData } = useSetRangeQuery(116, 118);
+  const { data: setData } = useSetRangeQuery(113, 118);
 
   const cardClicked = (id: number) => {
     navigator(`Details/${id}`);
@@ -42,18 +47,18 @@ export function HomePage() {
           collected cards and make decks bla bla bla
         </p>
       </div>
-      <div className="bg-primary-400 min-h-96 grid grid-cols-2">
-        <div className="m-16 flex-col">
+      <div className="bg-primary-400 min-h-96 grid grid-cols-1 md:grid-cols-2 ">
+        <div className="m-4 md:m-16 flex-col content-center  ">
           <p className="text-primary-800 text-36px text-center">Pokemon</p>
           <p className="text-primary-200 text-center p-4">
             Look at all the cool pokemon right here!
           </p>
         </div>
 
-        <div className="p-8 flex flex-wrap">
-          <div className="bg-primary-200 rounded-xl p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="px-8 py-2 md:p-8 flex flex-wrap ">
+          <div className="bg-primary-200 rounded-xl p-2 grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {cardData ? (
-              cardData.slice(0, 3 * columns).map((card) => (
+              cardData.slice(0, cardsShown).map((card) => (
                 <div
                   className="hover:scale-110 hover:shadow-lg"
                   key={card.id}
@@ -73,11 +78,11 @@ export function HomePage() {
         </div>
       </div>
 
-      <div className="bg-primary-200 min-h-96 grid grid-cols-2">
-        <div className="p-8 flex flex-wrap">
-          <div className="bg-primary-300 rounded-xl p-2 grid grid-cols-3 gap4">
+      <div className="bg-primary-200 min-h-96 grid md:grid-cols-2 grid-cols-1">
+        <div className="px-8 pb-2 md:p-8 flex flex-wrap order-2 md:order-1">
+          <div className="bg-primary-300 rounded-xl p-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap4">
             {setData ? (
-              setData?.map((set) => (
+              setData.slice(0, setsShown).map((set) => (
                 <div
                   className="hover:scale-110 hover:shadow-lg"
                   key={set.id}
@@ -91,7 +96,7 @@ export function HomePage() {
             )}
           </div>
         </div>
-        <div className="m-16 flex-col">
+        <div className="m-4 md:m-16 flex-col content-center order-1 md:order-2">
           <p className="text-primary-800 text-36px text-center">Sets</p>
           <p className="text-primary-400 text-center p-4">The Newest Sets</p>
         </div>
