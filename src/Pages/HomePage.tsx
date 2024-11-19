@@ -6,24 +6,24 @@ import { useSetRangeQuery } from "../Data/SetMutations";
 export function HomePage() {
   const navigator = useNavigate();
 
-  const [columns, setColumns] = useState(5); 
+  const [columns, setColumns] = useState(5);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1280) {
-        setColumns(5); 
+        setColumns(5);
       } else if (window.innerWidth >= 1024) {
-        setColumns(4); 
+        setColumns(4);
       } else if (window.innerWidth >= 768) {
-        setColumns(3); 
+        setColumns(3);
       } else if (window.innerWidth >= 640) {
-        setColumns(2); 
+        setColumns(2);
       } else {
-        setColumns(1); 
+        setColumns(1);
       }
     };
-    handleResize(); 
-    window.addEventListener("resize", handleResize); 
+    handleResize();
+    window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -35,10 +35,11 @@ export function HomePage() {
   };
   return (
     <div className="bg-primary-100">
-      <div className="m-16">
+      <div className="p-16">
         <p className="text-center font-bold text-40px">PokeDecks</p>
         <p className="mx-auto max-w-[40vw]">
-          Welcome to my app bla bla bla work in progress bla bla bla track collected cards and make decks bla bla bla
+          Welcome to my app bla bla bla work in progress bla bla bla track
+          collected cards and make decks bla bla bla
         </p>
       </div>
       <div className="bg-primary-400 min-h-96 grid grid-cols-2">
@@ -50,23 +51,21 @@ export function HomePage() {
         </div>
 
         <div className="p-8 flex flex-wrap">
-          <div className="bg-primary-200 p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+          <div className="bg-primary-200 rounded-xl p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {cardData ? (
-              cardData
-                .slice(0, 3*columns)
-                .map((card) => (
-                  <div
-                    className="hover:scale-110 hover:shadow-lg"
-                    key={card.id}
-                    onClick={() => cardClicked(card.id)}
-                  >
-                    <img
-                      className="h-40"
-                      src={card.imageurl}
-                      alt={card.cardname}
-                    />
-                  </div>
-                ))
+              cardData.slice(0, 3 * columns).map((card) => (
+                <div
+                  className="hover:scale-110 hover:shadow-lg"
+                  key={card.id}
+                  onClick={() => cardClicked(card.id)}
+                >
+                  <img
+                    className="h-40"
+                    src={card.imageurl}
+                    alt={card.cardname}
+                  />
+                </div>
+              ))
             ) : (
               <div className="animate-spin" />
             )}
@@ -76,7 +75,7 @@ export function HomePage() {
 
       <div className="bg-primary-200 min-h-96 grid grid-cols-2">
         <div className="p-8 flex flex-wrap">
-          <div className="bg-primary-300 p-2 grid grid-cols-3 gap4">
+          <div className="bg-primary-300 rounded-xl p-2 grid grid-cols-3 gap4">
             {setData ? (
               setData?.map((set) => (
                 <div

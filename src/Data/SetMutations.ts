@@ -33,6 +33,7 @@ export const useSetByIdQuery = (id: number) => {
   return useQuery({
     queryKey: ["Sets", id],
     queryFn: () => setApiService.GetSets(id),
+    enabled: !!id,
   })
 };
 

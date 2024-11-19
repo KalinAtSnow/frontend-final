@@ -1,29 +1,39 @@
-import { useState, useEffect } from "react";
-import { Card } from "../Data/Interfaces";
 import { useParams } from "react-router";
-import { cardApiService } from "../Data/CardService";
+import { useCardByIdQuery, useSetCardsQuery } from "../Data/CardMutations";
+import { useEffect } from "react";
+import { useSetByIdQuery } from "../Data/SetMutations";
+import { getRandomItems } from "./Functions";
 
 export const Details = () => {
   const { id } = useParams();
-  const [cardData, setCardData] = useState<Card>();
+
+  const {
+    data: cardData,
+    isLoading: cardDataLoading,
+    isError: cardDataError,
+  } = useCardByIdQuery(Number(id));
+
+  const { data: setCardData } = useSetCardsQuery(Number(cardData?.setid));
+
+  const {
+    data: setByIdData,
+    isLoading: setByIdLoading,
+    isError: setByIdError,
+  } = useSetByIdQuery(cardData?.setid || 0);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        if (id !== undefined) {
-          if (isNaN(+id)) {
-            throw new Error("ID is not a number");
-          }
-          const data = await cardApiService.GetCard(+id);
-          setCardData(data);
-        }
-      } catch (error) {
-        console.error("Error fetching card data:", error);
-      }
-    };
+    if (cardData && cardData.setid) return;
+  }, [cardData]);
 
-    fetchData();
-  }, [id]);
+  if (cardDataLoading || setByIdLoading) {
+    return <div>Loading...</div>;
+  }
+
+  const randomSetCards = getRandomItems(setCardData ?? [], 6);
+
+  if (cardDataError || setByIdError) {
+    return <div>Error loading data.</div>;
+  }
 
   return (
     <>
@@ -36,8 +46,7 @@ export const Details = () => {
             <p className="text-40px ml-4">{cardData?.cardname}</p>
             <div>
               <label className="p-2">
-                {" "}
-                Add Count to Library
+                Add to Inventory
                 <input
                   type="number"
                   className=" m-2 border max-w-10 border-primary-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
@@ -49,7 +58,21 @@ export const Details = () => {
       </div>
 
       <div className="bg-primary-300 min-h-52">
-        <p>More cards from (this set)</p>
+        <p>More cards from {setByIdData?.setname}</p>
+        <div>
+          <div className="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto lg:grid-cols-6 gap-4">
+            {randomSetCards &&
+              randomSetCards.map((card) => (
+                <div className="relative" key={card.id}>
+                  <img
+                    className="hover:scale-105 hover:shadow-lg w-full"
+                    src={card.imageurl}
+                    alt={card.cardname}
+                  />
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
 
       <div className="bg-primary-100 min-h-52">

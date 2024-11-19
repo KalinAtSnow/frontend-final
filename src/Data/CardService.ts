@@ -22,7 +22,7 @@ async function GetCard(id:number): Promise<Card> {
     const response = await axios.get<Card>(`${API_URL}/api/Card/get/${id}`);
     return response.data;
   } catch (error: any) {
-    toast.error("could not fetch cards" + error.message);
+    toast.error("could not fetch card" + error.message);
     throw error;
   }
 }
@@ -32,7 +32,17 @@ async function GetCardRange(start:number, end:number): Promise<Card[]> {
     const response = await axios.get<Card[]>(`${API_URL}/api/Card/get/${start}/${end}`);
     return response.data;
   } catch (error: any) {
-    toast.error("could not fetch cards" + error.message);
+    toast.error("could not fetch card range" + error.message);
+    throw error;
+  }
+}
+
+async function GetCardsInSet(id:number): Promise<Card[]> {
+  try {
+    const response = await axios.get<Card[]>(`${API_URL}/api/Card/get/set/${id}`);
+    return response.data;
+  } catch (error: any) {
+    toast.error("could not fetch cards from set" + error.message);
     throw error;
   }
 }
@@ -42,7 +52,7 @@ async function GetCardsInInventory(id:number): Promise<Card_Inventory[]> {
     const response = await axios.get<Card_Inventory[]>(`${API_URL}/api/Card/get/inventory/${id}`);
     return response.data;
   } catch (error: any) {
-    toast.error("could not fetch cards" + error.message);
+    toast.error("could not fetch cards in inventory" + error.message);
     throw error;
   }
 }
@@ -61,5 +71,6 @@ export const cardApiService = {
   Get: GetCards,
   GetRange: GetCardRange,
   GetCard: GetCard,
-  GetInventory: GetCardsInInventory
+  GetInventory: GetCardsInInventory,
+  GetSetCards: GetCardsInSet
 };

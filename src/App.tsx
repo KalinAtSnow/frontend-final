@@ -7,7 +7,7 @@ import {
 } from "@tanstack/react-query";
 import { Route, Routes } from "react-router";
 import { HomePage } from "./Pages/HomePage";
-import { ViewAllCards } from "./Pages/ViewAllCards";
+import ViewAllCards from "./Pages/ViewAllCards";
 import NavBar from "./Navbar";
 import { Details } from "./Pages/Details";
 import { Inventory } from "./Pages/inventory";
