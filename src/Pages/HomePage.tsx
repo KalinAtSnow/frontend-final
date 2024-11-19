@@ -41,10 +41,13 @@ export function HomePage() {
   return (
     <div className="bg-primary-100">
       <div className="p-16">
-        <p className="text-center font-bold text-40px">PokeDecks</p>
-        <p className="mx-auto max-w-[40vw]">
-          Welcome to my app bla bla bla work in progress bla bla bla track
-          collected cards and make decks bla bla bla
+        <p className="text-center font-bold text-56px">PokeDecks</p>
+        <h1 className="text-center text-primary-800 text-36px">
+          Track, Build, Complete: Your Ultimate Collectible Card Companion
+        </h1>
+
+        <p className="mx-auto max-w-[50vw] hidden md:block">
+          Welcome to PokeDecks, the ultimate tool for collectors and deck builders. With our intuitive inventory system, you can easily track your entire collection, organize your cards, and see exactly what you need to complete your decks. Build custom decks based on what you own, check off cards as you acquire them, and keep an up-to-date inventory of your collection. Whether you're a casual collector or a competitive player, our platform helps you stay on top of your collection and ensures you're always ready for the next game.
         </p>
       </div>
       <div className="bg-primary-400 min-h-96 grid grid-cols-1 md:grid-cols-2 ">

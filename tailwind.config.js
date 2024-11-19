@@ -12,6 +12,9 @@ export default {
         '30px': '30px',
         '36px': '36px',
         '40px': '40px',
+        '48px': '48px',
+        '56px': '56px',
+        '64px': '64px',
       },
       colors: {
         'primary': {

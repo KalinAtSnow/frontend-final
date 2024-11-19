@@ -10,7 +10,7 @@ import { HomePage } from "./Pages/HomePage";
 import ViewAllCards from "./Pages/ViewAllCards";
 import NavBar from "./Navbar";
 import { Details } from "./Pages/Details";
-import { Inventory } from "./Pages/inventory";
+import { Inventory } from "./Pages/Inventory";
 
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
