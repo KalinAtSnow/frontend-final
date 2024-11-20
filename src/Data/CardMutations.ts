@@ -30,7 +30,7 @@ export const useAllCardsQuery = () => {
 
 export const useSetCardsQuery = (id: number) => {
   return useQuery({
-    queryKey: ["cards", id],
+    queryKey: ["set cards", id],
     queryFn: () => cardApiService.GetSetCards(id),
     enabled: !!id,
   })
@@ -52,7 +52,7 @@ export const useCardByIdQuery = (id: number) => {
 
 export const useCardRangeQuery = (start: number, end: number) => {
   return useQuery({
-    queryKey: ["cards", start, end],
+    queryKey: ["card range", start, end],
     queryFn: () => cardApiService.GetRange(start, end),
   })
 }; 

@@ -12,24 +12,29 @@ export const Details = () => {
     isLoading: cardDataLoading,
     isError: cardDataError,
   } = useCardByIdQuery(Number(id));
-
+  
   const { data: setCardData } = useSetCardsQuery(Number(cardData?.setid));
-
+  console.log("detail render")
+  
   const {
     data: setByIdData,
     isLoading: setByIdLoading,
     isError: setByIdError,
   } = useSetByIdQuery(cardData?.setid || 0);
-
+  
   useEffect(() => {
     if (cardData && cardData.setid) return;
   }, [cardData]);
-
-  if (cardDataLoading || setByIdLoading) {
-    return <div>Loading...</div>;
+  
+  
+  if (cardDataLoading){
+    return <div>Loading Card Data...</div>
   }
-
-  const randomSetCards = getRandomItems(setCardData ?? [], 6);
+  if( setByIdLoading) {
+    return <div>Loading Set Info...</div>;
+  }
+  
+  const randomSetCards = setCardData ? getRandomItems(setCardData, 6) : [];
 
   if (cardDataError || setByIdError) {
     return <div>Error loading data.</div>;
@@ -57,6 +62,7 @@ export const Details = () => {
         </div>
       </div>
 
+    {setByIdData ? 
       <div className="bg-primary-300 min-h-52">
         <p>More cards from {setByIdData?.setname}</p>
         <div>
@@ -68,12 +74,13 @@ export const Details = () => {
                     className="hover:scale-105 hover:shadow-lg w-full"
                     src={card.imageurl}
                     alt={card.cardname}
-                  />
+                    />
                 </div>
               ))}
           </div>
         </div>
       </div>
+              : <></>}
 
       <div className="bg-primary-100 min-h-52">
         <p>More cards featuring {cardData?.cardname}</p>
