@@ -71,18 +71,16 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 | Nov 9  | [x] Home page implemented          |
 |        | [x] AWS DB with seed data          |
 |        | [x] View cards (no filters)        |
-| Nov 13 | [ ] View cards (with filters)      |
-|        | [O] Start error handling           | not sure what else I can do?
-|        | [O] View card details              |
+|        | [O] Start error handling           | 
+|        | [X] View card details              |
 |        | [x] Testing pipeline               |
 |        | [X] Local state storage            |
 | Nov 16 | [x] Toasts                         |
 |        | [x] Linting in pipeline            |
-|        | [O] Add cards to inventory GUI     |
+|        | [O] Add cards to inventory GUI     | - works, but not all that intuitive button isn't styling
 |        | [X] View inventory                 |
-| Nov 20 | [ ] Create decks                   |
-|        | [ ] View decks based on set        | Not sure what I meant by this
-|        | [ ] View popular decks             | I don't think that I can find any apis for this - might just create some examples myself to use
+| Nov 20 | [O] Create decks                   | 
+|        | [ ] View popular decks             | 
 | Nov 23 | [ ] Export decklist                |
 |        | [ ] View/edit decks                |
 | Nov 26 | [ ] Import decklist                |
@@ -132,3 +130,29 @@ I feel like tanstack is up to date now, It seems to be working, but I haven't st
 | **Experience: all experiences mobile friendly** 5 pts                           | 2.5    | 0        |
 | **Experience: 3 instances where elements re-order themselves** 5 pts            | 1.6    | 0        |
 | **Professional, organized and smooth experience** 20 pts                        | 6      | 6        |
+
+## Nov 20
+I ended up not having as much time as I had hoped, and I'm kinda falling behind right now. I did get a mutation working, or at least I think so. I am missing a lot of data from the database and that is holding me back a bit. I worked on the inventory page, details page so that they would work together. I can get details page to send a quantity of cards to the inventory, but its not fully complete. I don't have any way edit your quantities yet, so if you go to the details page and click add to inventory a bunch, it would show multiple times in the inventory. I did start to create a deck page/system in the database, but I haven't gotten around to implementing it in the front end yet, some barebones but nothing that works. I took some of the generic input components from our practicum project so that I had them in the project. 
+
+This week I am hoping to get the deck page to work, at least so that you can view decks that have been created by you as well as others. I'm not sure I'll be able to get a system that can add cards to a deck before next time but I will try. I'll get at least one of the generic components working as well. I don't like how my images scale as your page size changes so that can be something that I can make generic fairly easily I think. Maybe a table for them as well so that the inventory can be searched like the 'all cards' page. all in all, I have a lot of work left to do, I'm spending just about all my free time on this and I'm still falling behind.
+
+| Rubric Points                                                                   | Nov 20 | Expected | 
+| ------------------------------------------------------------------------------- | ------ | ------   | 
+| **Project scope is 2-3 times larger than Inventory Management** 30 pts          | 15     |  10-12   | 
+| **Technology: use local storage** 5 pts                                         | 5      |    0     | - not sure what I can do for this
+| **Technology: Client side state stores (e.g. tanstack query or context)** 5 pts | 3      |    3     | 
+| **Technology: Toasts / global notifications or alerts** 5 pts                   | 5      |    5     | 
+| **Technology: Error handling (both on api requests and render errors)** 5 pts   | 5      |    5     | 
+| **Technology: Network Calls that read and write data** 5 pts                    | 5      |    5     | 
+| **Technology: Developer type helping (typescript)** 5 pts                       | 5      |    5     | 
+| **Technology: 10+ pages or views** 5 pts                                        | 3.5    |  2.5     | 
+| **Technology: CI/CD pipeline** 5 pts                                            | 5      |    5     | 
+| **Technology: tests run in pipeline, pipeline aborts if they fail** 5 pts       | 5      |    5     | 
+| **Technology: linting in pipeline** 5 pts                                       | 5      |    5     | 
+| **Technology: 3+ generic form input components** 9 pts                          | 6      |    6     | 
+| **Technology: 4+ generic layout components** 12 pts                             | 8      |    0     | - still figuring out how I can use this. one can prob be card display, other than that i'm not sure
+| **Technology: authentication and user account support** 10 pts                  | 10     |    5     | - still working on it, didn't know how to do it in class, still don't know how to do it now
+| **Technology: authorized pages and public pages** 5 pts                         | 3      |    0     |  -see above
+| **Experience: all experiences mobile friendly** 5 pts                           | 3      |    2     | 
+| **Experience: 3 instances where elements re-order themselves** 5 pts            | 1.6    |  1.6     | 
+| **Professional, organized and smooth experience** 20 pts                        | 10     |   10     | 
