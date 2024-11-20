@@ -3,9 +3,26 @@ import { useCardByIdQuery, useSetCardsQuery } from "../Data/CardMutations";
 import { useEffect } from "react";
 import { useSetByIdQuery } from "../Data/SetMutations";
 import { getRandomItems } from "./Functions";
+import GNumberInput from "../assets/Generics/gNumberInput";
+import { GNumberInputController, useGNumberInput } from "../assets/Generics/gNumberInputController";
+import { useUpdateInventoryMutation } from "../Data/inventoryMutations";
+import { InventoryDTO } from "../Data/Interfaces";
 
 export const Details = () => {
   const { id } = useParams();
+
+  const control : GNumberInputController = useGNumberInput(1, (v) => v <= 0 ?"Please enter a number greater than 0" : "");
+
+  const postInventory = useUpdateInventoryMutation()
+
+  function AddToInventory() {
+    const newInventoryItem : InventoryDTO = {
+      userId: 1,
+      cardId : Number(id),
+      quantity: control.value
+    }
+    postInventory.mutate(newInventoryItem)
+  }
 
   const {
     data: cardData,
@@ -14,7 +31,6 @@ export const Details = () => {
   } = useCardByIdQuery(Number(id));
   
   const { data: setCardData } = useSetCardsQuery(Number(cardData?.setid));
-  console.log("detail render")
   
   const {
     data: setByIdData,
@@ -51,11 +67,8 @@ export const Details = () => {
             <p className="text-40px ml-4">{cardData?.cardname}</p>
             <div>
               <label className="p-2">
-                Add to Inventory
-                <input
-                  type="number"
-                  className=" m-2 border max-w-10 border-primary-300 rounded-md bg-white text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
-                />
+                <GNumberInput control={control} maximum={100} minimum={0} />
+                <button onClick={()=>AddToInventory}> Add to Inventory  </button>
               </label>
             </div>
           </div>

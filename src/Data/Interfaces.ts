@@ -39,3 +39,9 @@ id : number;
 quantity : number;
 userid: number;
 }
+
+export interface InventoryDTO {
+  userId: number;
+  cardId: number;
+  quantity: number;
+}
