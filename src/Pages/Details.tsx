@@ -1,27 +1,28 @@
 import { useParams } from "react-router";
 import { useCardByIdQuery, useSetCardsQuery } from "../Data/CardMutations";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSetByIdQuery } from "../Data/SetMutations";
 import { getRandomItems } from "./Functions";
 import GNumberInput from "../assets/Generics/gNumberInput";
 import { GNumberInputController, useGNumberInput } from "../assets/Generics/gNumberInputController";
-import { useUpdateInventoryMutation } from "../Data/inventoryMutations";
-import { InventoryDTO } from "../Data/Interfaces";
+//import { useUpdateInventoryMutation } from "../Data/inventoryMutations";
+import { Card, InventoryDTO } from "../Data/Interfaces";
+import { inventoryApiService } from "../Data/inventoryService";
 
 export const Details = () => {
   const { id } = useParams();
 
-  const control : GNumberInputController = useGNumberInput(1, (v) => v <= 0 ?"Please enter a number greater than 0" : "");
+  const control : GNumberInputController = useGNumberInput(0, (v) => v <= 0 ?"Please enter a number greater than 0" : "");
+  const [randomSetCards, setRandomSetCards] = useState<Card[]>([])
+  //const postInventory = useUpdateInventoryMutation()
 
-  const postInventory = useUpdateInventoryMutation()
-
-  function AddToInventory() {
+  const AddToInventory = () => {
     const newInventoryItem : InventoryDTO = {
       userId: 1,
       cardId : Number(id),
       quantity: control.value
     }
-    postInventory.mutate(newInventoryItem)
+    inventoryApiService.Put(newInventoryItem)
   }
 
   const {
@@ -38,6 +39,10 @@ export const Details = () => {
     isError: setByIdError,
   } = useSetByIdQuery(cardData?.setid || 0);
   
+  useEffect(()=>{
+  setRandomSetCards(setCardData ? getRandomItems(setCardData, 6) : [])
+  }, [setCardData])
+
   useEffect(() => {
     if (cardData && cardData.setid) return;
   }, [cardData]);
@@ -50,7 +55,6 @@ export const Details = () => {
     return <div>Loading Set Info...</div>;
   }
   
-  const randomSetCards = setCardData ? getRandomItems(setCardData, 6) : [];
 
   if (cardDataError || setByIdError) {
     return <div>Error loading data.</div>;
@@ -68,9 +72,9 @@ export const Details = () => {
             <div>
               <label className="p-2">
                 <GNumberInput control={control} maximum={100} minimum={0} />
-                <button onClick={()=>AddToInventory}> Add to Inventory  </button>
               </label>
             </div>
+                <button className="border-purple-400" onClick={AddToInventory}> Add to Inventory  </button>
           </div>
         </div>
       </div>
@@ -85,7 +89,7 @@ export const Details = () => {
                 <div className="relative" key={card.id}>
                   <img
                     className="hover:scale-105 hover:shadow-lg w-full"
-                    src={card.imageurl}
+                    //src={card.imageurl}
                     alt={card.cardname}
                     />
                 </div>
