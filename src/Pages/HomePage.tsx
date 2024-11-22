@@ -2,12 +2,37 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCardRangeQuery } from "../Data/CardMutations";
 import { useSetRangeQuery } from "../Data/SetMutations";
+import { useAuth } from "react-oidc-context";
+import { AddUser, AuthEndpoint, getUserByEmail } from "../Data/AuthService";
+import { UserDTO } from "../Data/Interfaces";
 
 export function HomePage() {
   const navigator = useNavigate();
+  const auth = useAuth();
 
   const [cardsShown, setCardsShown] = useState(0);
   const [setsShown, setSetsShown] = useState(6);
+
+  useEffect(() => {
+    checkIfUserExists()
+  }, [auth.user?.id_token]);
+
+  async function checkIfUserExists() {
+    if (auth.user && auth.user.id_token) {
+      const data = await AuthEndpoint(auth.user.id_token);
+      console.log(data)
+      const currUser = await getUserByEmail(data);
+      if (!currUser) {
+        const newUser: UserDTO = {
+          email: data,
+          forename: data,
+          surname: data,
+          username: "New User",
+        };
+        AddUser(newUser);
+      }
+    }
+  }
 
   useEffect(() => {
     const handleResize = () => {

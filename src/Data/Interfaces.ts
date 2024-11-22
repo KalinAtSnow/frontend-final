@@ -45,3 +45,10 @@ export interface InventoryDTO {
   cardId: number;
   quantity: number;
 }
+
+export interface UserDTO {
+  forename: string;
+  surname: string;
+  email: string;
+  username: string;
+}
