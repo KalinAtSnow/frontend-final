@@ -36,10 +36,10 @@ export const useSetCardsQuery = (id: number) => {
   })
 };
 
-export const useInventoryCardsQuery = (id: number) => {
+export const useInventoryCardsQuery = () => {
   return useQuery({
     queryKey: ["Inventory"],
-    queryFn: ()=> cardApiService.GetInventory(id),
+    queryFn: ()=> cardApiService.GetInventory(),
   })
 };
 

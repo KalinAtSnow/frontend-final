@@ -21,7 +21,6 @@ function LoginLogout() {
   if (auth.isAuthenticated) {
     return (
       <div className="text-primary-200 ml-auto p-4">
-        Hello {auth.user?.profile.sub}{" "}
         <button className="text-primary-200 ml-auto p-4"
           onClick={() => {
             void auth.removeUser();

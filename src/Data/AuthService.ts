@@ -3,7 +3,6 @@ import { API_URL } from "./CardService";
 import { UserDTO } from "./Interfaces";
 
 export const AuthEndpoint = async (idToken: string) => {
-    console.log("Sending id toke", idToken)
   const response = await axios.get(API_URL + "/api/user/Authorize", {
     headers: {
       Authorization: `Bearer ${idToken}`,

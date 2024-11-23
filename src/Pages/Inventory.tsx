@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useInventoryCardsQuery } from "../Data/CardMutations";
 
 export function Inventory() {
-  const { data: cardData } = useInventoryCardsQuery(1);
+  const { data: cardData } = useInventoryCardsQuery();
   const navigator = useNavigate();
 
   const cardClicked = (id: number) => {

@@ -47,9 +47,13 @@ async function GetCardsInSet(id:number): Promise<Card[]> {
   }
 }
 
-async function GetCardsInInventory(id:number): Promise<Card_Inventory[]> {
+async function GetCardsInInventory(): Promise<Card_Inventory[]> {
   try {
-    const response = await axios.get<Card_Inventory[]>(`${API_URL}/api/Card/get/inventory/${id}`);
+    const email = document.cookie.split("=")[1];
+    const response = await axios.get<Card_Inventory[]>(`${API_URL}/api/Card/get/inventory`, {
+      headers:{
+        "Email": email
+      }});
     return response.data;
   } catch (error: any) {
     toast.error("could not fetch cards in inventory" + error.message);

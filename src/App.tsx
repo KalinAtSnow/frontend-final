@@ -33,7 +33,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/cards" element={<ViewAllCards />} />
           <Route path="/Details/:id" element={<Details />} />
-          <Route path="/inventory/:id" element={<Inventory />} />
+          <Route path="/inventory/" element={<Inventory />} />
           <Route path="/MyDecks" element={<MyDecks />} />
         </Routes>
       </QueryClientProvider>

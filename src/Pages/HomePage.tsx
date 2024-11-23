@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useCardRangeQuery } from "../Data/CardMutations";
+import { useSetCardsQuery } from "../Data/CardMutations";
 import { useSetRangeQuery } from "../Data/SetMutations";
 import { useAuth } from "react-oidc-context";
 import { AddUser, AuthEndpoint, getUserByEmail } from "../Data/AuthService";
-import { UserDTO } from "../Data/Interfaces";
+import { Card, UserDTO } from "../Data/Interfaces";
+import { getRandomItems } from "./Functions";
 
 export function HomePage() {
   const navigator = useNavigate();
@@ -12,22 +13,29 @@ export function HomePage() {
 
   const [cardsShown, setCardsShown] = useState(0);
   const [setsShown, setSetsShown] = useState(6);
+  const [randomCards, setRandomCards] = useState<Card[]>([])
+  const { data: cardData } = useSetCardsQuery(115);
+  const { data: setData } = useSetRangeQuery(113, 118);
 
   useEffect(() => {
-    checkIfUserExists()
+    ValidateUser()
   }, [auth.user?.id_token]);
 
-  async function checkIfUserExists() {
+  useEffect(() => {
+    setRandomCards(cardData ? getRandomItems(cardData, 15) : [])}
+    ,[cardData])
+
+  async function ValidateUser() {
     if (auth.user && auth.user.id_token) {
       const data = await AuthEndpoint(auth.user.id_token);
-      console.log(data)
+      document.cookie = `id_token=${data}`;
       const currUser = await getUserByEmail(data);
       if (!currUser) {
         const newUser: UserDTO = {
           email: data,
           forename: data,
           surname: data,
-          username: "New User",
+          username: "",
         };
         AddUser(newUser);
       }
@@ -57,11 +65,13 @@ export function HomePage() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const { data: cardData } = useCardRangeQuery(7, 27);
-  const { data: setData } = useSetRangeQuery(113, 118);
+
 
   const cardClicked = (id: number) => {
     navigator(`Details/${id}`);
+  };
+  const setClicked = (id: number) => {
+    navigator(`Set/${id}`);
   };
   return (
     <div className="bg-primary-100">
@@ -78,15 +88,15 @@ export function HomePage() {
       <div className="bg-primary-400 min-h-96 grid grid-cols-1 md:grid-cols-2 ">
         <div className="m-4 md:m-16 flex-col content-center  ">
           <p className="text-primary-800 text-36px text-center">Pokemon</p>
-          <p className="text-primary-200 text-center p-4">
+          <p className="text-primary-50 text-center p-4">
             Look at all the cool pokemon right here!
           </p>
         </div>
 
         <div className="px-8 py-2 md:p-8 flex flex-wrap ">
           <div className="bg-primary-200 rounded-xl p-2 grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {cardData ? (
-              cardData.slice(0, cardsShown).map((card) => (
+            {randomCards ? (
+              randomCards.slice(0, cardsShown).map((card) => (
                 <div
                   className="hover:scale-110 hover:shadow-lg"
                   key={card.id}
@@ -112,9 +122,9 @@ export function HomePage() {
             {setData ? (
               setData.slice(0, setsShown).map((set) => (
                 <div
-                  className="hover:scale-110 hover:shadow-lg"
+                  className="hover:scale-110"
                   key={set.id}
-                  onClick={() => cardClicked(set.id)}
+                  onClick={() => setClicked(set.id)}
                 >
                   <img className="h-40" src={set.imageurl} />
                 </div>
@@ -125,8 +135,8 @@ export function HomePage() {
           </div>
         </div>
         <div className="m-4 md:m-16 flex-col content-center order-1 md:order-2">
-          <p className="text-primary-800 text-36px text-center">Sets</p>
-          <p className="text-primary-400 text-center p-4">The Newest Sets</p>
+          <p className="text-primary-900 text-36px text-center">Sets</p>
+          <p className="text-primary-800 text-center p-4">The Newest Sets</p>
         </div>
       </div>
     </div>

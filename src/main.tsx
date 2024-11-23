@@ -16,14 +16,14 @@ const oidcConfig : AuthProviderProps = {
   authority: "https://auth.snowse-ts.duckdns.org/realms/advanced-frontend-ts",
   client_id: "kalin-final",
   redirect_uri: "http://localhost:5173/",
-  // ...
 
   onSigninCallback: (user) => {
     console.log("on Signin Callback");
     const newUrl = window.location.href.split("?")[0];
     window.history.replaceState({}, document.title, newUrl);
-    console.log(user?.access_token);
 
+    document.cookie = `id_token=${user?.access_token}`;
+    
     //logout remove cookie
     //remove cookie after time
   },
