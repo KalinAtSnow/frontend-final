@@ -70,11 +70,25 @@ async function PutCard(upload: Card): Promise<void> {
   }
 }
 
+async function GetCardInInventory(id:number): Promise<Card_Inventory> {
+  try {
+    const email = document.cookie.split("=")[1];
+    const response = await axios.get<Card_Inventory>(`${API_URL}/api/Card/get/${id}`,{headers:{
+      "Email": email
+    }});
+    return response.data;
+  } catch (error: any) {
+    toast.error("could not fetch card" + error.message);
+    throw error;
+  }
+}
+
 export const cardApiService = {
   Put: PutCard,
   Get: GetCards,
   GetRange: GetCardRange,
   GetCard: GetCard,
   GetInventory: GetCardsInInventory,
-  GetSetCards: GetCardsInSet
+  GetSetCards: GetCardsInSet,
+  GetInventoryCard: GetCardInInventory
 };

@@ -46,9 +46,31 @@ export interface InventoryDTO {
   quantity: number;
 }
 
+export interface Inventory {
+  id: number;
+  userId: number;
+  cardId: number;
+  quantity: number;
+}
+
+export interface InventoryEdit {
+  Id: number;
+  UserId: number;
+  CardId: number;
+  Quantity: number;
+}
+
 export interface UserDTO {
   forename: string;
   surname: string;
   email: string;
   username: string;
+}
+
+export interface Deck {
+  id: number;
+  deckname: string;
+  highlightcardid: number;
+  userid: number;
+  cards: Card[];
 }

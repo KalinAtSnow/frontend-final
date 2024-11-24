@@ -6,7 +6,7 @@ export function Inventory() {
   const navigator = useNavigate();
 
   const cardClicked = (id: number) => {
-    navigator(`../../Details/${id}`);
+    navigator(`Details/${id}`);
   };
 
   if (cardData == undefined) {

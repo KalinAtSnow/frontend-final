@@ -77,7 +77,7 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 |        | [X] Local state storage            |
 | Nov 16 | [x] Toasts                         |
 |        | [x] Linting in pipeline            |
-|        | [O] Add cards to inventory GUI     | - works, but not all that intuitive button isn't styling
+|        | [O] Add cards to inventory GUI     |
 |        | [X] View inventory                 |
 | Nov 20 | [O] Create decks                   | 
 |        | [ ] View popular decks             | 
@@ -85,7 +85,7 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 |        | [ ] View/edit decks                |
 | Nov 26 | [ ] Import decklist                |
 | Dec 4  | [ ] Admin add cards                |
-|        | [ ] Prep to buy cards              |
+|        | [ ] Prep to buy cards              | - basically add db stuff
 | Dec 7  | [ ] Cleanup/refactor/whatever else |
 
 ## Nov 6

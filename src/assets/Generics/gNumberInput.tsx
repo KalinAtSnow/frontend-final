@@ -5,7 +5,8 @@ const GNumberInput: React.FC<{
   control: GNumberInputController;
   minimum?: number;
   maximum?: number;
-}> = ({ label, control, minimum, maximum }) => {
+  Change?: () => void;
+}> = ({ label, control, minimum, maximum, Change }) => {
   return (
     <div className="relative pb-5 pt-8">
       <label className="absolute top-0 left-2">{label}</label>
@@ -17,6 +18,7 @@ const GNumberInput: React.FC<{
           max={maximum ?? 10}
           value={control.value}
           onChange={(e) => {
+            if (Change) Change();
             control.setValue(Number(e.target.value));
             control.setHasBeenTouched(true);
           }}

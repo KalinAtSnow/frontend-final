@@ -43,6 +43,13 @@ export const useInventoryCardsQuery = () => {
   })
 };
 
+export const useInventoryCardQuery = (id: number) => {
+  return useQuery({
+    queryKey: ["Inventory", id],
+    queryFn: () => cardApiService.GetInventoryCard(id),
+  })
+};
+
 export const useCardByIdQuery = (id: number) => {
   return useQuery({
     queryKey: ["cards", id],

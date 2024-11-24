@@ -5,7 +5,6 @@ import { useSetByIdQuery } from "../Data/SetMutations";
 import { getRandomItems } from "./Functions";
 import GNumberInput from "../assets/Generics/gNumberInput";
 import { GNumberInputController, useGNumberInput } from "../assets/Generics/gNumberInputController";
-//import { useUpdateInventoryMutation } from "../Data/inventoryMutations";
 import { Card, InventoryDTO } from "../Data/Interfaces";
 import { inventoryApiService } from "../Data/inventoryService";
 
@@ -14,7 +13,6 @@ export const Details = () => {
 
   const control : GNumberInputController = useGNumberInput(0, (v) => v <= 0 ?"Please enter a number greater than 0" : "");
   const [randomSetCards, setRandomSetCards] = useState<Card[]>([])
-  //const postInventory = useUpdateInventoryMutation()
 
   const AddToInventory = () => {
     const newInventoryItem : InventoryDTO = {
@@ -22,7 +20,7 @@ export const Details = () => {
       cardId : Number(id),
       quantity: control.value
     }
-    inventoryApiService.Put(newInventoryItem)
+    inventoryApiService.Post(newInventoryItem)
   }
 
   const {
