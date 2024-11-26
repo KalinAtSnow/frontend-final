@@ -33,6 +33,11 @@ export interface Card_Inventory {
   inventories: InventoryItem[];
 }
 
+export interface CardWithQuantity { 
+  card: Card;
+  quantity: number;
+}
+
 export interface InventoryItem {
 cardid : number;
 id : number;
@@ -47,17 +52,18 @@ export interface InventoryDTO {
 }
 
 export interface Inventory {
-  id: number;
-  userId: number;
-  cardId: number;
-  quantity: number;
+  Id: number;
+  Userid: number;
+  Cardid: number;
+  Quantity: number;
 }
 
-export interface InventoryEdit {
-  Id: number;
-  UserId: number;
-  CardId: number;
-  Quantity: number;
+export interface User {
+  id: number;
+  forename: string;
+  surname: string;
+  email: string;
+  username: string;
 }
 
 export interface UserDTO {

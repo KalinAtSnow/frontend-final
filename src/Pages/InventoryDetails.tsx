@@ -4,7 +4,7 @@ import { useEffect,  } from "react";
 import GNumberInput from "../assets/Generics/gNumberInput";
 import { GNumberInputController, useGNumberInput } from "../assets/Generics/gNumberInputController";
 import { inventoryApiService } from "../Data/inventoryService";
-import { InventoryEdit } from "../Data/Interfaces";
+import { Inventory } from "../Data/Interfaces";
 
 export const InventoryDetails = () => {
   const { id } = useParams();
@@ -12,9 +12,9 @@ export const InventoryDetails = () => {
   const control : GNumberInputController = useGNumberInput(0, (v) => v <= 0 ?"Please enter a number greater than 0" : "");
 
   const AddToInventory = () => {
-    const newInventoryItem : InventoryEdit = {
-      UserId: 1,
-      CardId : Number(id),
+    const newInventoryItem : Inventory = {
+      Userid: 1,
+      Cardid : Number(id),
       Quantity: control.value,
       Id: cardData?.id ? cardData?.id : 0
     }

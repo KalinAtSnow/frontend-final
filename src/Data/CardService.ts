@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 import toast from "react-hot-toast";
-import { Card, Card_Inventory } from "./Interfaces";
+import { Card, Card_Inventory, CardWithQuantity } from "./Interfaces";
 
 export const API_URL = import.meta.env.VITE_API_URL;
 
@@ -10,6 +10,20 @@ console.log("api url" , API_URL);
 async function GetCards(): Promise<Card[]> {
   try {
     const response = await axios.get<Card[]>(`${API_URL}/api/Card/getall`);
+    return response.data;
+  } catch (error: any) {
+    toast.error("could not fetch cards" + error.message);
+    throw error;
+  }
+}
+
+async function GetDeckCards(id:number): Promise<CardWithQuantity[]> {
+  try {
+    const email = document.cookie.split("=")[1];
+    const response = await axios.get<CardWithQuantity[]>(`${API_URL}/api/Card/getDeckCards/${Number(id)}`,{
+      headers:{
+        "Email": email
+      }});
     return response.data;
   } catch (error: any) {
     toast.error("could not fetch cards" + error.message);
@@ -90,5 +104,6 @@ export const cardApiService = {
   GetCard: GetCard,
   GetInventory: GetCardsInInventory,
   GetSetCards: GetCardsInSet,
-  GetInventoryCard: GetCardInInventory
+  GetInventoryCard: GetCardInInventory,
+  GetDeckCards: GetDeckCards
 };

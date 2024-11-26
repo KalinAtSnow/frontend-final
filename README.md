@@ -156,3 +156,29 @@ This week I am hoping to get the deck page to work, at least so that you can vie
 | **Experience: all experiences mobile friendly** 5 pts                           | 3      |    2     | 
 | **Experience: 3 instances where elements re-order themselves** 5 pts            | 1.6    |  1.6     | 
 | **Professional, organized and smooth experience** 20 pts                        | 10     |   10     | 
+
+## nov 23
+
+I am so burned out on this project... 
+
+| Rubric Points                                                                  | Nov 23 | actual | 
+| -------------------------------------------------------------------------------| ------ | ------ | 
+| **Project scope is 2-3 times larger than Inventory Management** 30 pts         | 21     |  ?     | 
+| **Technology: use local storage** 5 pts                                        | 5      |  5     | if cookies count? 
+| **Technology: Client side state stores (e.g. tanstack query or context)** 5 pts| 4      |  4     | 
+| **Technology: Toasts / global notifications or alerts** 5 pts                  | 5      |  5     | 
+| **Technology: Error handling (both on api requests and render errors)** 5 pts  | 5      |  5     | 
+| **Technology: Network Calls that read and write data** 5 pts                   | 5      |  5     | 
+| **Technology: Developer type helping (typescript)** 5 pts                      | 5      |  5     | 
+| **Technology: 10+ pages or views** 5 pts                                       | 4      |  3     | 
+| **Technology: CI/CD pipeline** 5 pts                                           | 5      |  5     | 
+| **Technology: tests run in pipeline, pipeline aborts if they fail** 5 pts      | 5      |  5     | 
+| **Technology: linting in pipeline** 5 pts                                      | 5      |  5     | 
+| **Technology: 3+ generic form input components** 9 pts                         | 6      |  6     | 
+| **Technology: 4+ generic layout components** 12 pts                            | 8      |  0     | 
+| **Technology: authentication and user account support** 10 pts                 | 10     | 10     | 
+| **Technology: authorized pages and public pages** 5 pts                        | 3      |  0     | 
+| **Experience: all experiences mobile friendly** 5 pts                          | 3.5    | 1.5    | 
+| **Experience: 3 instances where elements re-order themselves** 5 pts           | 3.2    | 1.6    | 
+| **Professional, organized and smooth experience** 20 pts                       | 12     | 6      |
+

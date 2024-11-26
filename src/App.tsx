@@ -13,6 +13,8 @@ import { Details } from "./Pages/Details";
 import { Inventory } from "./Pages/Inventory";
 import { MyDecks } from "./Pages/MyDecks";
 import { InventoryDetails } from "./Pages/InventoryDetails";
+import { DeckDetails } from "./Pages/DeckDetails";
+import { AccountSettings } from "./Pages/AccountSettings";
 
 const queryClient = new QueryClient({
   queryCache: new QueryCache({
@@ -37,6 +39,8 @@ function App() {
           <Route path="/inventory/" element={<Inventory />} />
           <Route path="/MyDecks" element={<MyDecks />} />
           <Route path="/inventory/Details/:id" element={<InventoryDetails />} />
+          <Route path="/MyDecks/Details/:id" element={<DeckDetails />} />
+          <Route path="/AccountSettings" element={<AccountSettings />} />
         </Routes>
       </QueryClientProvider>
     </>

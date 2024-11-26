@@ -1,7 +1,7 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import { API_URL } from "./CardService";
-import { InventoryDTO, InventoryEdit } from "./Interfaces";
+import { Inventory, InventoryDTO } from "./Interfaces";
 
 async function Post(upload: InventoryDTO): Promise<void> {
     try {
@@ -13,7 +13,7 @@ async function Post(upload: InventoryDTO): Promise<void> {
     }
 }
 
-async function Put(upload: InventoryEdit): Promise<void> {
+async function Put(upload: Inventory): Promise<void> {
     try {
         await axios.put(`${API_URL}/api/inventory`, upload);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
