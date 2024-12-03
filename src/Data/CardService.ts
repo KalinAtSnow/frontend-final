@@ -61,14 +61,31 @@ async function GetCardsInSet(id:number): Promise<Card[]> {
   }
 }
 
-async function GetCardsInInventory(): Promise<Card_Inventory[]> {
+async function GetCardsInInventory(): Promise<CardWithQuantity[]> {
   try {
     const email = document.cookie.split("=")[1];
     const response = await axios.get<Card_Inventory[]>(`${API_URL}/api/Card/get/inventory`, {
       headers:{
         "Email": email
       }});
-    return response.data;
+      const transferredData: CardWithQuantity[] = response.data.map((item: Card_Inventory) => {
+        const card: Card = {
+          id: item.id,
+          pokemonid: item.pokemonid,
+          pokemontypeid: item.pokemontypeid,
+          setid: item.setid,
+          tcgplayerurl: item.tcgplayerurl,
+          cardnumber: item.cardnumber,
+          imageurl: item.imageurl,
+          cardname: item.cardname
+        };
+  
+        const quantity = item.inventories.length > 0 ? item.inventories[0].quantity ?? 0 : 0;
+  
+        return { card, quantity };
+      });
+  
+      return transferredData;
   } catch (error: any) {
     toast.error("could not fetch cards in inventory" + error.message);
     throw error;
@@ -90,6 +107,7 @@ async function GetCardInInventory(id:number): Promise<Card_Inventory> {
     const response = await axios.get<Card_Inventory>(`${API_URL}/api/Card/get/${id}`,{headers:{
       "Email": email
     }});
+    
     return response.data;
   } catch (error: any) {
     toast.error("could not fetch card" + error.message);

@@ -6,6 +6,8 @@ import { useAuth } from "react-oidc-context";
 import { AddUser, AuthEndpoint, getUserByEmail } from "../Data/AuthService";
 import { Card, UserDTO } from "../Data/Interfaces";
 import { getRandomItems } from "./Functions";
+import SmallCardContainer from "../assets/Generics/SmallCardContainer";
+import { useVariableCards, useVariableSets } from "../assets/VariableCardPull";
 
 export function HomePage() {
   const navigator = useNavigate();
@@ -42,30 +44,8 @@ export function HomePage() {
     }
   }
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 1280) {
-        setCardsShown(15);
-      } else if (window.innerWidth >= 1024) {
-        setCardsShown(12);
-        setSetsShown(6);
-      } else if (window.innerWidth >= 768) {
-        setCardsShown(9);
-        setSetsShown(4);
-      } else if (window.innerWidth >= 640) {
-        setCardsShown(10);
-        setSetsShown(6);
-      } else {
-        setCardsShown(4);
-        setSetsShown(4);
-      }
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-
+  useVariableCards(setCardsShown, [15, 12, 9, 10, 3]);
+  useVariableSets(setSetsShown, [6, 4, 3, 2, 1]);
 
   const cardClicked = (id: number) => {
     navigator(`Details/${id}`);
@@ -87,14 +67,14 @@ export function HomePage() {
       </div>
       <div className="bg-primary-400 min-h-96 grid grid-cols-1 md:grid-cols-2 ">
         <div className="m-4 md:m-16 flex-col content-center  ">
-          <p className="text-primary-800 text-36px text-center">Pokemon</p>
+          <p onClick={() => navigator("/cards")} className="text-primary-800 text-36px text-center">Pokemon</p>
           <p className="text-primary-50 text-center p-4">
             Look at all the cool pokemon right here!
           </p>
         </div>
 
-        <div className="px-8 py-2 md:p-8 flex flex-wrap ">
-          <div className="bg-primary-200 rounded-xl p-2 grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="sm:px-2 px-8 py-2  flex flex-wrap ">
+          <div className="bg-primary-200 content-center rounded-xl p-2 grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {randomCards ? (
               randomCards.slice(0, cardsShown).map((card) => (
                 <div
@@ -102,9 +82,8 @@ export function HomePage() {
                   key={card.id}
                   onClick={() => cardClicked(card.id)}
                 >
-                  <img
-                    className="h-40"
-                    src={card.imageurl}
+                  <SmallCardContainer
+                    cardUrl={card.imageurl}
                     alt={card.cardname}
                   />
                 </div>
@@ -118,7 +97,7 @@ export function HomePage() {
 
       <div className="bg-primary-200 min-h-96 grid md:grid-cols-2 grid-cols-1">
         <div className="px-8 pb-2 md:p-8 flex flex-wrap order-2 md:order-1">
-          <div className="bg-primary-300 rounded-xl p-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap4">
+          <div className="bg-primary-300 rounded-xl p-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {setData ? (
               setData.slice(0, setsShown).map((set) => (
                 <div
