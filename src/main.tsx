@@ -15,7 +15,7 @@ const logError = (error: Error, info: ErrorInfo) => {
 const oidcConfig : AuthProviderProps = {
   authority: "https://auth.snowse-ts.duckdns.org/realms/advanced-frontend-ts",
   client_id: "kalin-final",
-  redirect_uri: "http://localhost:5173/",
+  redirect_uri: window.location.href.split("?")[0],
 
   onSigninCallback: (user) => {
     console.log("on Signin Callback");
