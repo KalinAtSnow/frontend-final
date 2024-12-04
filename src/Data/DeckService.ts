@@ -2,10 +2,11 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { API_URL } from "./CardService";
 import { Deck } from "./Interfaces";
+import { getCookie } from "../Pages/Functions";
 
 async function GetDecks(): Promise<Deck[]> {
     try {
-      const email = document.cookie.split("=")[1];
+      const email = getCookie("id_token");
       const response = await axios.get<Deck[]>(`${API_URL}/api/Deck/get`, {
         headers:{
           "Email": email

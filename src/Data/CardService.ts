@@ -2,6 +2,7 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Card, Card_Inventory, CardWithQuantity } from "./Interfaces";
+import { getCookie } from "../Pages/Functions";
 
 export const API_URL = import.meta.env.VITE_API_URL;
 
@@ -19,7 +20,7 @@ async function GetCards(): Promise<Card[]> {
 
 async function GetDeckCards(id:number): Promise<CardWithQuantity[]> {
   try {
-    const email = document.cookie.split("=")[1];
+    const email = getCookie("id_token");
     const response = await axios.get<CardWithQuantity[]>(`${API_URL}/api/Card/getDeckCards/${Number(id)}`,{
       headers:{
         "Email": email
@@ -63,7 +64,7 @@ async function GetCardsInSet(id:number): Promise<Card[]> {
 
 async function GetCardsInInventory(): Promise<CardWithQuantity[]> {
   try {
-    const email = document.cookie.split("=")[1];
+    const email = getCookie("id_token");
     const response = await axios.get<Card_Inventory[]>(`${API_URL}/api/Card/get/inventory`, {
       headers:{
         "Email": email
@@ -103,7 +104,7 @@ async function PutCard(upload: Card): Promise<void> {
 
 async function GetCardInInventory(id:number): Promise<Card_Inventory> {
   try {
-    const email = document.cookie.split("=")[1];
+    const email = getCookie("id_token");
     const response = await axios.get<Card_Inventory>(`${API_URL}/api/Card/get/${id}`,{headers:{
       "Email": email
     }});

@@ -2,10 +2,11 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { API_URL } from "./CardService";
 import { User } from "./Interfaces";
+import { getCookie } from "../Pages/Functions";
 
 async function getUserInfo(): Promise<User> {
     try {
-      const email = document.cookie.split("=")[1];
+      const email = getCookie("id_token");
       const response = await axios.get<User>(`${API_URL}/api/User/`, {
         headers:{
           "Email": email
