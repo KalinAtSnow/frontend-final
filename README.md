@@ -71,7 +71,7 @@ Looking at some of the firefox browser apis, I might be able to work with the cl
 | Nov 9  | [x] Home page implemented          |
 |        | [x] AWS DB with seed data          |
 |        | [x] View cards (no filters)        |
-|        | [O] Start error handling           | 
+|        | [x] Start error handling           | 
 |        | [X] View card details              |
 |        | [x] Testing pipeline               |
 |        | [X] Local state storage            |
@@ -182,3 +182,25 @@ I am so burned out on this project...
 | **Experience: 3 instances where elements re-order themselves** 5 pts           | 3.2    | 1.6    | 
 | **Professional, organized and smooth experience** 20 pts                       | 12     | 6      |
 
+## dec 4
+
+| Rubric Points                                                                   | Dec 4 |   Expected  |
+| ------------------------------------------------------------------------------- | ----- | ----------- |
+| **Project scope is 2-3 times larger than Inventory Management** 30 pts          | 27    |  20         |
+| **Technology: use local storage** 5 pts                                         | 5     |   5         | - not just cookies now
+| **Technology: Client side state stores (e.g. tanstack query or context)** 5 pts | 5     |   5         |
+| **Technology: Toasts / global notifications or alerts** 5 pts                   | 5     |   5         |
+| **Technology: Error handling (both on api requests and render errors)** 5 pts   | 5     |   5         |
+| **Technology: Network Calls that read and write data** 5 pts                    | 5     |   5         |
+| **Technology: Developer type helping (typescript)** 5 pts                       | 5     |   5         |
+| **Technology: 10+ pages or views** 5 pts                                        | 5     |   8         |
+| **Technology: CI/CD pipeline** 5 pts                                            | 5     |   5         |
+| **Technology: tests run in pipeline, pipeline aborts if they fail** 5 pts       | 5     |   5         |
+| **Technology: linting in pipeline** 5 pts                                       | 5     |   5         |
+| **Technology: 3+ generic form input components** 9 pts                          | 9     |   9         |
+| **Technology: 4+ generic layout components** 12 pts                             | 12    |   6         |
+| **Technology: authentication and user account support** 10 pts                  | 10    |  10         |
+| **Technology: authorized pages and public pages** 5 pts                         | 5     |   0         |
+| **Experience: all experiences mobile friendly** 5 pts                           | 4.5   | 1.5         |
+| **Experience: 3 instances where elements re-order themselves** 5 pts            | 5     | 2.5         |
+| **Professional, organized and smooth experience** 20 pts                        | 16    |  10         |
