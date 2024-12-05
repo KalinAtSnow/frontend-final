@@ -33,7 +33,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="">
+    <div className="100vh">
       <div className="flex justify-center bg-primary-100 pt-6">
         <input
           type="text"
@@ -53,7 +53,7 @@ const App: React.FC = () => {
               key={card.id}
               onClick={() => cardClicked(card.id)}
             >
-              <FullCardContainer cardUrl={card.imageurl} />
+              <FullCardContainer cardUrl={card.imageurl} alt={card.cardname} />
             </div>
           ))}
         </div>

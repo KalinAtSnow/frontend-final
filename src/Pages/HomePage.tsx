@@ -47,7 +47,7 @@ export function HomePage() {
   const dataSaver = localStorage.getItem("dataSaver");
 
   useVariableCards(setCardsShown, [15, 12, 9, 10, 3]);
-  useVariableSets(setSetsShown, [6, 4, 3, 2, 1]);
+  useVariableSets(setSetsShown, [6, 6, 4, 3, 2]);
 
   const cardClicked = (id: number) => {
     navigator(`Details/${id}`);
@@ -78,7 +78,7 @@ export function HomePage() {
         <div className="m-4 md:m-16 flex-col content-center  ">
           <p
             onClick={() => navigator("/cards")}
-            className="text-primary-800 text-36px text-center"
+            className="text-primary-800 text-36px text-center cursor-pointer"
           >
             Pokemon
           </p>
@@ -92,7 +92,7 @@ export function HomePage() {
             {randomCards ? (
               randomCards.slice(0, cardsShown).map((card) => (
                 <div
-                  className="hover:scale-110 hover:shadow-lg"
+                  className="hover:scale-110 hover:shadow-lg cursor-pointer"
                   key={card.id}
                   onClick={() => cardClicked(card.id)}
                 >
@@ -113,9 +113,9 @@ export function HomePage() {
         <div className="px-8 pb-2 md:p-8 flex flex-wrap order-2 md:order-1">
           <div className="bg-primary-300 rounded-xl p-2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {setData ? (
-              setData.slice(0, setsShown).map((set) => (
+              [...setData].reverse().slice(0, setsShown).map((set) => (
                 <div
-                  className="hover:scale-110"
+                  className="hover:scale-110 cursor-pointer"
                   key={set.id}
                   onClick={() => setClicked(set.id)}
                 >

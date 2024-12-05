@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useCardByIdQuery, useSetCardsQuery } from "../Data/CardMutations";
 import { useEffect, useState } from "react";
 import { useSetByIdQuery } from "../Data/SetMutations";
@@ -39,6 +39,8 @@ export const Details = () => {
 
   const { data: setCardData } = useSetCardsQuery(Number(cardData?.setid));
 
+  const navigator = useNavigate();
+
   const {
     data: setByIdData,
     isLoading: setByIdLoading,
@@ -50,8 +52,8 @@ export const Details = () => {
   }, [setCardData]);
 
   useVariableCards(setCardsShown, [10, 10, 6, 5, 3]);
-  const [dataSaver, setDataSaver] = useState<boolean>(false)
-  useEffect (() => {
+  const [dataSaver, setDataSaver] = useState<boolean>(false);
+  useEffect(() => {
     setDataSaver(localStorage.getItem("dataSaver") === "true");
   }, []);
 
@@ -70,13 +72,19 @@ export const Details = () => {
     return <div>Error loading data.</div>;
   }
 
+  function cardClicked(id: number) {
+    navigator("../Details/" + id);
+  }
 
   return (
     <>
       <div className="p-8 bg-primary-100">
         <div className="mx-auto items-center flex">
           <div className="p-2 ">
-            <img src={dataSaver ? cardData?.imageurl : ""} alt={cardData?.cardname} />
+            <img
+              src={dataSaver ? cardData?.imageurl : ""}
+              alt={cardData?.cardname}
+            />
           </div>
           <div>
             <p className="text-40px ml-4">{cardData?.cardname}</p>
@@ -100,8 +108,11 @@ export const Details = () => {
             <div className="p-2 grid grid-cols-3 sm:grid-cols-5 md:grid-cols-6 mx-auto lg:grid-cols-10 gap-4">
               {randomSetCards &&
                 randomSetCards.slice(0, cardsShown).map((card) => (
-                  <div className="relative" key={card.id}>
-                    <SmallCardContainer cardUrl={card.imageurl} />
+                  <div className="relative cursor-pointer" key={card.id} onClick={() => cardClicked(card.id)}>
+                    <SmallCardContainer
+                      cardUrl={card.imageurl}
+                      alt={card.cardname}
+                    />
                   </div>
                 ))}
             </div>
