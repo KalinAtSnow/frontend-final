@@ -15,17 +15,17 @@ export function HomePage() {
 
   const [cardsShown, setCardsShown] = useState(0);
   const [setsShown, setSetsShown] = useState(6);
-  const [randomCards, setRandomCards] = useState<Card[]>([])
+  const [randomCards, setRandomCards] = useState<Card[]>([]);
   const { data: cardData } = useSetCardsQuery(115);
   const { data: setData } = useSetRangeQuery(113, 118);
 
   useEffect(() => {
-    ValidateUser()
+    ValidateUser();
   }, [auth.user?.id_token]);
 
   useEffect(() => {
-    setRandomCards(cardData ? getRandomItems(cardData, 15) : [])}
-    ,[cardData])
+    setRandomCards(cardData ? getRandomItems(cardData, 15) : []);
+  }, [cardData]);
 
   async function ValidateUser() {
     if (auth.user && auth.user.id_token) {
@@ -43,6 +43,8 @@ export function HomePage() {
       }
     }
   }
+
+  const dataSaver = localStorage.getItem("dataSaver");
 
   useVariableCards(setCardsShown, [15, 12, 9, 10, 3]);
   useVariableSets(setSetsShown, [6, 4, 3, 2, 1]);
@@ -62,12 +64,24 @@ export function HomePage() {
         </h1>
 
         <p className="mx-auto max-w-[50vw] hidden md:block">
-          Welcome to PokeDecks, the ultimate tool for collectors and deck builders. With our intuitive inventory system, you can easily track your entire collection, organize your cards, and see exactly what you need to complete your decks. Build custom decks based on what you own, check off cards as you acquire them, and keep an up-to-date inventory of your collection. Whether you're a casual collector or a competitive player, our platform helps you stay on top of your collection and ensures you're always ready for the next game.
+          Welcome to PokeDecks, the ultimate tool for collectors and deck
+          builders. With our intuitive inventory system, you can easily track
+          your entire collection, organize your cards, and see exactly what you
+          need to complete your decks. Build custom decks based on what you own,
+          check off cards as you acquire them, and keep an up-to-date inventory
+          of your collection. Whether you're a casual collector or a competitive
+          player, our platform helps you stay on top of your collection and
+          ensures you're always ready for the next game.
         </p>
       </div>
       <div className="bg-primary-400 min-h-96 grid grid-cols-1 md:grid-cols-2 ">
         <div className="m-4 md:m-16 flex-col content-center  ">
-          <p onClick={() => navigator("/cards")} className="text-primary-800 text-36px text-center">Pokemon</p>
+          <p
+            onClick={() => navigator("/cards")}
+            className="text-primary-800 text-36px text-center"
+          >
+            Pokemon
+          </p>
           <p className="text-primary-50 text-center p-4">
             Look at all the cool pokemon right here!
           </p>
@@ -105,7 +119,11 @@ export function HomePage() {
                   key={set.id}
                   onClick={() => setClicked(set.id)}
                 >
-                  <img className="h-40" src={set.imageurl} />
+                  <img
+                    className="h-40"
+                    src={dataSaver ? set.imageurl : ""}
+                    alt={set.setname}
+                  />
                 </div>
               ))
             ) : (

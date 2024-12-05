@@ -50,6 +50,10 @@ export const Details = () => {
   }, [setCardData]);
 
   useVariableCards(setCardsShown, [10, 10, 6, 5, 3]);
+  const [dataSaver, setDataSaver] = useState<boolean>(false)
+  useEffect (() => {
+    setDataSaver(localStorage.getItem("dataSaver") === "true");
+  }, []);
 
   useEffect(() => {
     if (cardData && cardData.setid) return;
@@ -66,12 +70,13 @@ export const Details = () => {
     return <div>Error loading data.</div>;
   }
 
+
   return (
     <>
       <div className="p-8 bg-primary-100">
         <div className="mx-auto items-center flex">
           <div className="p-2 ">
-            <img src={cardData?.imageurl} alt={cardData?.cardname} />
+            <img src={dataSaver ? cardData?.imageurl : ""} alt={cardData?.cardname} />
           </div>
           <div>
             <p className="text-40px ml-4">{cardData?.cardname}</p>
