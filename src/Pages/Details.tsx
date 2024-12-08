@@ -93,7 +93,7 @@ export const Details = () => {
                 <GNumberInput control={control} maximum={100} minimum={0} />
               </label>
             </div>
-            <button className="border-purple-400" onClick={AddToInventory}>
+            <button className="bg-primary-300 m-2 hover:bg-primary-400 hover:text-black text-black text-sm rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500" onClick={AddToInventory}>
               {" "}
               Add to Inventory{" "}
             </button>

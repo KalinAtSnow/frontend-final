@@ -1,17 +1,26 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useSetCardsQuery } from "../Data/CardMutations";
 import { useSetByIdQuery } from "../Data/SetMutations";
 import FullCardContainer from "../assets/Generics/FullCardContainer";
+import { useEffect } from "react";
 
 const SetDetails = () => {
+  const navigate = useNavigate();
+
   const { id } = useParams();
 
   const { data: setData } = useSetByIdQuery(Number(id));
   const { data: setCardData } = useSetCardsQuery(Number(id));
+  useEffect(() => {
+    if  (setCardData?.length === 0) {
+      navigate('/404'); 
+  }
+  }, [setCardData]);
 
   if (setData == undefined) {
     return <p>Loading...</p>;
   }
+
 
   return (
     <>

@@ -13,7 +13,7 @@ const SmallCardContainer: React.FC<{
       <img
         src={dataSaver ? cardUrl : ""}
         alt={alt}
-        className="h-40 min-w-28 max-w-28"
+        className="h-40 min-w-28 max-w-28 hover:scale-105 hover:shadow-lg"
       />
     </div>
   );

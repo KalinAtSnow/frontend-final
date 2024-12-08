@@ -6,8 +6,11 @@ export function Inventory() {
   const { data: cardData } = useInventoryCardsQuery();
   const navigator = useNavigate();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const cardClicked = (id: number) => {
-    navigator(`Details/${id}`);
+    // navigator(`Details/${id}`);
+    navigator(`404`);
+
   };
 
   if (cardData == undefined) {
