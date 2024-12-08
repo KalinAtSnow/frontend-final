@@ -9,6 +9,12 @@ export interface Card {
   cardname: string;
 }
 
+export interface DeckDTO {
+  deckname: string;
+  highlightcardid?: number;
+  ispublic: boolean;
+}
+
 export interface Sets {
   id: number;
   setname: string;

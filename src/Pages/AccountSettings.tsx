@@ -22,9 +22,9 @@ export function AccountSettings() {
       <p className="text-primary-800 text-xl ml-2">{userData?.forename} {userData?.surname}</p>
       <p className="text-primary-800 text-xl ml-2">{userData?.email}</p>
       <p className="text-primary-800 text-xl ml-2 mb-2">{userData?.username}</p>
-      <input type="checkbox" checked={dataSaver} onChange={() => dataSaverClicked()} className="ml-2" />
+      <input type="checkbox" checked={!dataSaver} onChange={() => dataSaverClicked()} className="ml-2" />
       <label className="ml-2">
-        Data Saver
+        Data Saver - Causes images to not be loaded
       </label>
       <div className="">
         <LoginLogout />

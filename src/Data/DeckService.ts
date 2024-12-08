@@ -1,7 +1,7 @@
 import axios from "axios";
 import toast from "react-hot-toast";
 import { API_URL } from "./CardService";
-import { Deck } from "./Interfaces";
+import { Deck, DeckDTO } from "./Interfaces";
 import { getCookie } from "../Pages/Functions";
 
 async function GetDecks(): Promise<Deck[]> {
@@ -19,6 +19,22 @@ async function GetDecks(): Promise<Deck[]> {
     }
   }
 
+  async function AddDeck(data: DeckDTO): Promise<void> {
+    try {
+      const email = getCookie("id_token");
+      await axios.post(`${API_URL}/api/Deck`, data, {
+        headers:{
+          "Email": email
+        }});
+        toast.success("Deck added successfully");
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.error("could not add card to inventory" + error.message);
+      throw error;
+    }
+  }
+
   export const deckApiService = {
-    GetDecks: GetDecks
+    GetDecks: GetDecks,
+    AddDeck: AddDeck
   };
