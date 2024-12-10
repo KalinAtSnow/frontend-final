@@ -14,7 +14,7 @@ async function GetDecks(): Promise<Deck[]> {
       return response.data;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      toast.error("could not fetch cards in inventory" + error.message);
+      toast.error("could not fetch decks" + error.message);
       throw error;
     }
   }

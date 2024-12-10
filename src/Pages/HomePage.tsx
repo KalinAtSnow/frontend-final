@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSetCardsQuery } from "../Data/CardMutations";
-import { useSetRangeQuery } from "../Data/SetMutations";
 import { useAuth } from "react-oidc-context";
 import { AddUser, AuthEndpoint, getUserByEmail } from "../Data/AuthService";
 import { Card, UserDTO } from "../Data/Interfaces";
 import { getRandomItems } from "./Functions";
 import SmallCardContainer from "../assets/Generics/SmallCardContainer";
 import { useVariableCards, useVariableSets } from "../assets/VariableCardPull";
+import { useSetRangeQuery } from "../Data/SetMutations";
 
 export function HomePage() {
   const navigator = useNavigate();

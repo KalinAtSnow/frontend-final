@@ -6,6 +6,7 @@ import { useState } from "react";
 import GTextInput from "../assets/Generics/gTextInput";
 import { useGTextInput } from "../assets/Generics/gTextInputController";
 import { DeckDTO } from "../Data/Interfaces";
+import { getCookie } from "./Functions";
 
 export function MyDecks() {
   const { data: deckData } = useDecksQuery();
@@ -31,29 +32,39 @@ export function MyDecks() {
     toggleModal();
   };
 
+  const email = getCookie("id_token");
+
   return (
     <>
-      <div className="p-8 bg-primary-50 ">
-        <div className="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto lg:grid-cols-6 gap-4">
-          {deckData?.map((deck) => (
-            <div
-              onClick={() => deckClicked(deck.id)}
-              className="relative cursor-pointer border-2 border-primary-300 rounded-lg p-2 text-center"
-              key={deck.id}
-            >
-              <p>{deck.deckname}</p>
-            </div>
-          ))}
+      {email ? (
+        <div className="p-8 bg-primary-50 ">
+          <div className="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto lg:grid-cols-6 gap-4">
+            {deckData?.map((deck) => (
+              <div
+                onClick={() => deckClicked(deck.id)}
+                className="relative cursor-pointer border-2 border-primary-300 rounded-lg p-2 text-center"
+                key={deck.id}
+              >
+                <p>{deck.deckname}</p>
+              </div>
+            ))}
+          </div>
+          <button
+            className="bg-primary-500 text-white p-2 rounded-full mt-4"
+            onClick={() => {
+              toggleModal();
+            }}
+          >
+            <PlusIcon className="h-6 w-6" />
+          </button>
         </div>
-        <button
-          className="bg-primary-500 text-white p-2 rounded-full mt-4"
-          onClick={() => {
-            toggleModal();
-          }}
-        >
-          <PlusIcon className="h-6 w-6" />
-        </button>
-      </div>
+      ) : (
+     <div className="flex justify-center items-center h-screen">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
+        You need to be logged in to view your inventory.
+        </div>
+    </div>
+      )}
 
       <Modal isOpen={isModalOpen} onClose={toggleModal} title="Add Deck">
         <div className="p-4 bg-primary-100 flex flex-wrap">
