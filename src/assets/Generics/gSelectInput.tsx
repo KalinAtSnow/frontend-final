@@ -10,10 +10,10 @@ const GSelectInput: React.FC<{
 
   return (
     <>
-      <label className="form-label d-flex flex-column flex-grow-1">
+      <label className={`form-label d-flex flex-column flex-grow-1 `}>
         {label}
         <select
-          className={`form-control ${
+          className={` p-2 border border-gray-300 rounded-lg mx-4 bg-white text-gray-700 focus:outline-none form-control ${
             control.hasBeenTouched
               ? control.error
                 ? "is-invalid"
@@ -34,7 +34,6 @@ const GSelectInput: React.FC<{
             </option>
           ))}
         </select>
-        <p className="invalid-feedback">{control.error}</p>
       </label>
     </>
   );

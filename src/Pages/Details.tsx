@@ -12,6 +12,8 @@ import { Card, InventoryDTO } from "../Data/Interfaces";
 import { inventoryApiService } from "../Data/inventoryService";
 import SmallCardContainer from "../assets/Generics/SmallCardContainer";
 import { useVariableCards } from "../assets/VariableCardPull";
+import { GSelectInputController, useGSelectInput } from "../assets/Generics/gSelectInputController";
+import GSelectInput from "../assets/Generics/gSelectInput";
 
 export const Details = () => {
   const { id } = useParams();
@@ -57,6 +59,8 @@ export const Details = () => {
     setDataSaver(localStorage.getItem("dataSaver") === "true");
   }, []);
 
+  const selectControl : GSelectInputController = useGSelectInput( ["No Foil", "Reverse Holo", "Holo"], (value: string) => value === "" ? "Please select a rarity" : ""); 
+  
   useEffect(() => {
     if (cardData && cardData.setid) return;
   }, [cardData]);
@@ -92,6 +96,14 @@ export const Details = () => {
               <label className="p-2">
                 <GNumberInput control={control} maximum={100} minimum={0} />
               </label>
+              <div>
+              <label className="p-2">
+                <GSelectInput
+                  control={selectControl}
+                  label="Select a rarity"
+                />
+              </label>
+            </div>
             </div>
             <button className="bg-primary-300 m-2 hover:bg-primary-400 hover:text-black text-black text-sm rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary-500" onClick={AddToInventory}>
               {" "}

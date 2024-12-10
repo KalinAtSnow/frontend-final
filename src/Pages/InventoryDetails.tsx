@@ -9,12 +9,14 @@ import {
 import { inventoryApiService } from "../Data/inventoryService";
 import { Inventory } from "../Data/Interfaces";
 
+
 export const InventoryDetails = () => {
   const { id } = useParams();
 
   const control: GNumberInputController = useGNumberInput(0, (v) =>
     v <= 0 ? "Please enter a number greater than 0" : ""
   );
+
 
   const AddToInventory = () => {
     const newInventoryItem: Inventory = {
