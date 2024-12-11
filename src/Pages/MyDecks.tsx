@@ -35,9 +35,9 @@ export function MyDecks() {
   const email = getCookie("id_token");
 
   return (
-    <>
+    <div className="p-8 bg-primary-50 h-screen">
       {email ? (
-        <div className="p-8 bg-primary-50 ">
+        <>
           <div className="p-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto lg:grid-cols-6 gap-4">
             {deckData?.map((deck) => (
               <div
@@ -57,7 +57,7 @@ export function MyDecks() {
           >
             <PlusIcon className="h-6 w-6" />
           </button>
-        </div>
+          </>
       ) : (
      <div className="flex justify-center items-center h-screen">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-md text-center">
@@ -67,7 +67,7 @@ export function MyDecks() {
       )}
 
       <Modal isOpen={isModalOpen} onClose={toggleModal} title="Add Deck">
-        <div className="p-4 bg-primary-100 flex flex-wrap">
+        <div className="p-4 bg-primary-50 flex flex-wrap">
           <GTextInput label="Deck Name" control={nameControl} />
 
           <label className="ml-2">
@@ -97,6 +97,6 @@ export function MyDecks() {
           </button>
         </div>
       </Modal>
-    </>
+      </div>
   );
 }

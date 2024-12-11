@@ -63,7 +63,7 @@ export const InventoryDetails = () => {
 
   return (
     <>
-      <div className="p-8 bg-primary-100">
+      <div className="p-8 bg-primary-50">
         <div className="mx-auto items-center flex">
           <div className="p-2 ">
             <img

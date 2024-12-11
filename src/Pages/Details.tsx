@@ -82,7 +82,7 @@ export const Details = () => {
 
   return (
     <>
-      <div className="p-8 bg-primary-100">
+      <div className="p-8 bg-primary-50">
         <div className="mx-auto items-center flex">
           <div className="p-2 ">
             <img
@@ -134,7 +134,7 @@ export const Details = () => {
         <></>
       )}
 
-      <div className="bg-primary-100 min-h-52">
+      <div className="bg-primary-50 min-h-52">
         <p>More cards featuring {cardData?.cardname}</p>
       </div>
     </>

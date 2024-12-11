@@ -11,7 +11,7 @@ const MissingNo404: React.FC = () => {
         backgroundPosition: "center",
       }}
     >
-      <div className=" bg-primary-100 p-6 rounded-lg shadow-2xl max-w-xl text-center">
+      <div className=" bg-primary-50 p-6 rounded-lg shadow-2xl max-w-xl text-center">
         <h1 className="text-6xl font-bold text-red-500 mb-6">404</h1>
 
         <h2 className="text-3xl font-semibold mb-4 text-primary-950">

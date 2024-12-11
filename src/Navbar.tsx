@@ -31,7 +31,7 @@ function NavBar() {
             <p>My Decks</p>
           </Link>
           <Link
-            className="m-6 text-primary-100"
+            className="m-6 text-primary-100 ml-auto"
             to="/AccountSettings"
             aria-label="Account Settings"
           >

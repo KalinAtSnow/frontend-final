@@ -56,7 +56,7 @@ export function HomePage() {
     navigator(`Set/${id}`);
   };
   return (
-    <div className="bg-primary-100">
+    <div className="bg-primary-50">
       <div className="p-16">
         <p className="text-center font-bold text-56px">PokeDecks</p>
         <h1 className="text-center text-primary-800 text-36px">

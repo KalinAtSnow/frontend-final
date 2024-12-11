@@ -20,8 +20,8 @@ function LoginLogout() {
 
   if (auth.isAuthenticated) {
     return (
-      <div className="text-primary-800 ml-auto p-4 hidden sm:block">
-        <button className="text-primary-800 ml-auto p-4 "
+      <div className="text-primary-800">
+        <button className="text-primary-800 p-4 border border-primary-800 rounded-md"
           onClick={() => {
             void auth.removeUser();
           }}
@@ -32,7 +32,7 @@ function LoginLogout() {
     );
   }
 
-  return <button className="text-primary-800 ml-auto p-4" onClick={() => void auth.signinRedirect()}>Log in</button>;
+  return <button className="text-primary-800 p-4 border border-primary-800 rounded-md" onClick={() => void auth.signinRedirect()}>Log in</button>;
 }
 
 export default LoginLogout;
